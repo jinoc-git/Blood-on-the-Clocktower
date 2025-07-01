@@ -1,0 +1,220 @@
+
+import React, { useState } from 'react';
+import { Job, MemoData, Token, PERIODS } from '../types';
+import TokenSelectorModal from './TokenSelectorModal';
+import Image from 'next/image';
+
+interface MemoSheetProps {
+  selectedJobs: Job[];
+  memoData: MemoData;
+  onMemoUpdate: (jobId: string, period: string, value: string) => void;
+  onTokenUpdate: (jobId: string, tokens: Token[]) => void;
+  onJobRemove: (jobId: string) => void;
+  onJobClick: (job: Job) => void;
+  onJobCellClick: (jobId?: string) => void;
+}
+
+export default function MemoSheet({
+  selectedJobs,
+  memoData,
+  onMemoUpdate,
+  onTokenUpdate,
+  onJobRemove,
+  onJobClick,
+  onJobCellClick
+}: MemoSheetProps) {
+  const [showTokenSelector, setShowTokenSelector] = useState<string | null>(null);
+  const [maxRows, setMaxRows] = useState(8);
+  const [periods, setPeriods] = useState(PERIODS);
+  
+  // Create array of rows (some may be empty)
+  const displayJobs = Array.from({ length: maxRows }, (_, index) => 
+    selectedJobs[index] || null
+  );
+
+  const addRow = () => {
+    if (maxRows < 15) {
+      setMaxRows(maxRows + 1);
+    }
+  };
+
+  const addPeriod = () => {
+    const lastPeriod = periods[periods.length - 1];
+    const match = lastPeriod.match(/^(day|night)(\d+)$/);
+    if (match) {
+      const [, type, num] = match;
+      const nextNum = parseInt(num);
+      const newPeriod = type === 'night' ? `day${nextNum + 1}` : `night${nextNum + 1}`;
+      setPeriods([...periods, newPeriod]);
+    }
+  };
+
+  const formatPeriod = (period: string) => {
+    if (period === 'night0') return '0번째 밤';
+    const match = period.match(/^(day|night)(\d+)$/);
+    if (match) {
+      const [, type, num] = match;
+      return type === 'day' ? `${num}번째 낮` : `${num}번째 밤`;
+    }
+    return period;
+  };
+
+  return (
+    <div className="p-4">
+      <div className="mb-4">
+        <h1 className="text-2xl font-bold text-center">시계탑에 흐른 피 - 메모 시트</h1>
+        <div className="flex justify-center space-x-4 mt-4">
+          <button
+            onClick={addRow}
+            disabled={maxRows >= 15}
+            className="px-4 py-2 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-300 text-white rounded"
+          >
+            행 추가 ({maxRows}/15)
+          </button>
+          <button
+            onClick={addPeriod}
+            className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded"
+          >
+            시간대 추가
+          </button>
+        </div>
+      </div>
+
+      <div className="overflow-x-auto">
+        <table className="w-full border-collapse border">
+          <thead>
+            <tr>
+              <th className="border p-2 bg-gray-50 min-w-[40px]">삭제</th>
+              <th className="border p-2 bg-gray-50 min-w-[60px]">토큰</th>
+              <th className="border p-2 bg-gray-50 min-w-[150px]">직업</th>
+              {periods.map(period => (
+                <th key={period} className="border p-2 bg-gray-50 min-w-[120px]">
+                  {formatPeriod(period)}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {displayJobs.map((job, index) => (
+              <tr key={job?.id || `empty-${index}`}>
+                {/* Delete Cell */}
+                <td className="border p-1">
+                  {job && (
+                    <button
+                      onClick={() => onJobRemove(job.id)}
+                      className="w-8 h-8 bg-red-500 hover:bg-red-600 text-white rounded text-sm"
+                    >
+                      ×
+                    </button>
+                  )}
+                </td>
+
+                {/* Token Cell */}
+                <td className="border p-1">
+                  {job && (
+                    <div className="flex flex-col items-center">
+                      <div className="flex flex-wrap gap-1 mb-2">
+                        {((memoData[job.id]?.tokens as Token[]) || []).map(token => (
+                          <div
+                            key={token.id}
+                            className="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center overflow-hidden"
+                            title={token.name}
+                          >
+                            <Image
+                              src={`/tokens/${token.type}.png`}
+                              alt={token.name}
+                              width={20}
+                              height={20}
+                              className="object-cover"
+                              onError={(e) => {
+                                const target = e.target as HTMLImageElement;
+                                target.style.display = 'none';
+                                const parent = target.parentElement;
+                                if (parent) {
+                                  parent.innerHTML = `<span class="text-xs font-bold">${token.name.charAt(0)}</span>`;
+                                  parent.className = "w-6 h-6 rounded-full bg-yellow-400 border border-yellow-600 flex items-center justify-center";
+                                }
+                              }}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                      
+                      <button
+                        onClick={() => setShowTokenSelector(job.id)}
+                        className="w-8 h-8 bg-gray-200 hover:bg-gray-300 rounded text-sm"
+                      >
+                        +
+                      </button>
+                    </div>
+                  )}
+                </td>
+
+                {/* Job Cell */}
+                <td className="border p-2">
+                  {job ? (
+                    <div className="flex items-center space-x-2">
+                      <div 
+                        className="w-12 h-12 relative cursor-pointer"
+                        onClick={() => onJobClick(job)}
+                      >
+                        <Image
+                          src={job.image || '/placeholder-job.png'}
+                          alt={job.name}
+                          fill
+                          className="object-cover rounded"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = '/placeholder-job.png';
+                          }}
+                        />
+                      </div>
+                      <span 
+                        className="font-medium cursor-pointer hover:text-blue-600"
+                        onClick={() => onJobClick(job)}
+                      >
+                        {job.name}
+                      </span>
+                    </div>
+                  ) : (
+                    <button
+                      onClick={() => onJobCellClick()}
+                      className="w-full h-12 bg-gray-100 hover:bg-gray-200 border-2 border-dashed border-gray-300 rounded text-gray-500"
+                    >
+                      + 직업 추가
+                    </button>
+                  )}
+                </td>
+
+                {/* Period Cells */}
+                {periods.map(period => (
+                  <td key={period} className="border p-1">
+                    {job && (
+                      <textarea
+                        value={memoData[job.id]?.[period] as string || ''}
+                        onChange={(e) => onMemoUpdate(job.id, period, e.target.value)}
+                        className="w-full h-20 p-1 text-sm resize-none border-none outline-none"
+                        placeholder="메모..."
+                      />
+                    )}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <TokenSelectorModal
+        isOpen={showTokenSelector !== null}
+        currentTokens={showTokenSelector ? ((memoData[showTokenSelector]?.tokens as Token[]) || []) : []}
+        onTokensChange={(newTokens) => {
+          if (showTokenSelector) {
+            onTokenUpdate(showTokenSelector, newTokens);
+          }
+        }}
+        onClose={() => setShowTokenSelector(null)}
+      />
+    </div>
+  );
+}
