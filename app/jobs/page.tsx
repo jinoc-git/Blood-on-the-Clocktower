@@ -1,35 +1,44 @@
-
-"use client";
+'use client';
 import React, { useState } from 'react';
 import NavigationBar from '../components/NavigationBar';
 import JobModal from '../components/JobModal';
-import { JOBS } from '../data/jobs';
 import { Job } from '../types';
 import Image from 'next/image';
+import { JOBS } from '../data/삐약이의저주';
 
 export default function JobsPage() {
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const categories = ['villager', 'outsider', 'minion', 'demon'] as const;
+  const categories = ['townsfolk', 'outsider', 'minion', 'demon'] as const;
 
   const getCategoryTitle = (category: string) => {
     switch (category) {
-      case 'villager': return '마을 주민';
-      case 'outsider': return '이방인';
-      case 'minion': return '하수인';
-      case 'demon': return '악마';
-      default: return category;
+      case 'townsfolk':
+        return '마을 주민';
+      case 'outsider':
+        return '이방인';
+      case 'minion':
+        return '하수인';
+      case 'demon':
+        return '악마';
+      default:
+        return category;
     }
   };
 
   const getJobColor = (category: string) => {
     switch (category) {
-      case 'villager': return 'bg-blue-500 hover:bg-blue-600';
-      case 'outsider': return 'bg-yellow-500 hover:bg-yellow-600';
-      case 'minion': return 'bg-red-500 hover:bg-red-600';
-      case 'demon': return 'bg-black hover:bg-gray-800';
-      default: return 'bg-gray-500 hover:bg-gray-600';
+      case 'townsfolk':
+        return 'bg-blue-500 hover:bg-blue-600';
+      case 'outsider':
+        return 'bg-sky-400 hover:bg-sky-500';
+      case 'minion':
+        return 'bg-red-500 hover:bg-red-600';
+      case 'demon':
+        return 'bg-black hover:bg-gray-800';
+      default:
+        return 'bg-gray-500 hover:bg-gray-600';
     }
   };
 
@@ -41,38 +50,37 @@ export default function JobsPage() {
   return (
     <div className="min-h-screen bg-gray-100">
       <NavigationBar />
-      
+
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold text-center mb-8">
           시계탑에 흐른 피 - 직업 설명
         </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {categories.map(category => (
+          {categories.map((category) => (
             <div key={category} className="bg-white rounded-lg shadow-md p-6">
               <h2 className="text-xl font-bold mb-4 text-center">
                 {getCategoryTitle(category)}
               </h2>
-              
+
               <div className="grid grid-cols-1 gap-3">
-                {JOBS.filter(job => job.category === category).map(job => (
+                {JOBS.filter((job) => job.team === category).map((job) => (
                   <div
                     key={job.id}
                     className={`
-                      ${getJobColor(job.category)} 
+                      ${getJobColor(job.team)} 
                       text-white p-4 rounded cursor-pointer transition-colors flex items-center
                     `}
-                    onClick={() => handleJobClick(job)}
-                  >
-                    <div className="w-12 h-12 mr-3 relative flex-shrink-0">
+                    onClick={() => handleJobClick(job)}>
+                    <div className="w-12 h-12 mr-3 relative flex-shrink-0 bg-white rounded-full">
                       <Image
-                        src={job.image || '/placeholder-job.png'}
+                        src={job.image || '/assets/jobs/placeholder-job.png'}
                         alt={job.name}
                         fill
                         className="object-cover rounded"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
-                          target.src = '/placeholder-job.png';
+                          target.src = '/assets/jobs/placeholder-job.png';
                         }}
                       />
                     </div>
