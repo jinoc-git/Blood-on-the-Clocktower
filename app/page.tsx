@@ -5,8 +5,7 @@ import MemoSheet from './components/MemoSheet';
 import JobModal from './components/JobModal';
 import JobSelectorModal from './components/JobSelectorModal';
 import NavigationBar from './components/NavigationBar';
-import { Job, MemoData, Token } from './types';
-import { ErrorBoundary } from 'next/dist/client/components/error-boundary';
+import { Job, MemoData } from './types';
 
 export default function Home() {
   const [selectedJobs, setSelectedJobs] = useState<Job[]>([]);

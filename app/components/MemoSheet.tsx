@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Job, MemoData, Token } from '../types';
-import TokenSelectorModal from './TokenSelectorModal';
 import Image from 'next/image';
 import { PERIODS } from '../constants/periods';
 
@@ -16,6 +15,8 @@ interface MemoSheetProps {
   handleRemoveOnlyMemo: () => void;
 }
 
+const INIT_ROW = 8;
+
 export default function MemoSheet({
   selectedJobs,
   memoData,
@@ -30,8 +31,13 @@ export default function MemoSheet({
   // const [showTokenSelector, setShowTokenSelector] = useState<string | null>(
   //   null
   // );
-  const [maxRows, setMaxRows] = useState(8);
-  const [periods, setPeriods] = useState(PERIODS);
+  const [maxRows, setMaxRows] = useState(INIT_ROW);
+
+  useEffect(() => {
+    const item = localStorage.getItem('blood-on-the-clocktower');
+    const memoLen = Object.keys(JSON.parse(item)).length;
+    setMaxRows(memoLen > INIT_ROW ? memoLen : INIT_ROW);
+  }, []);
 
   // Create array of rows (some may be empty)
   const displayJobs = Array.from(
@@ -102,7 +108,7 @@ export default function MemoSheet({
               <th className="border p-2 bg-gray-50 min-w-[40px]"></th>
               {/* <th className="border p-2 bg-gray-50 min-w-[60px]">토큰</th> */}
               <th className="border p-2 bg-gray-50 min-w-[150px]">직업</th>
-              {periods.map((period) => (
+              {PERIODS.map((period) => (
                 <th
                   key={period}
                   className="border p-2 bg-gray-50 min-w-[120px]">
@@ -202,7 +208,7 @@ export default function MemoSheet({
                 </td>
 
                 {/* Period Cells */}
-                {periods.map((period) => (
+                {PERIODS.map((period) => (
                   <td key={period} className="border p-1">
                     {job && (
                       <textarea
