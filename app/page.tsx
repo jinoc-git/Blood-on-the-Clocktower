@@ -104,6 +104,21 @@ export default function Home() {
     });
   };
 
+  const handleRemoveOnlyMemo = () => {
+    setMemoData((prev) => {
+      const newMemodata = {};
+
+      Object.keys(prev).forEach((jobId) => {
+        newMemodata[jobId] = {
+          info: prev[jobId].info,
+          memos: {},
+          tokens: [],
+        };
+      });
+      return newMemodata;
+    });
+  };
+
   // const handleTokenUpdate = (jobId: string, tokens: Token[]) => {
   //   console.log(jobId, tokens);
   //   setMemoData((prev) => {
@@ -154,6 +169,7 @@ export default function Home() {
             onJobClick={handleJobClick}
             onJobCellClick={handleJobCellClick}
             onReset={resetSheet}
+            handleRemoveOnlyMemo={handleRemoveOnlyMemo}
           />
         </div>
 

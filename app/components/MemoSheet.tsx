@@ -13,6 +13,7 @@ interface MemoSheetProps {
   onJobClick: (job: Job) => void;
   onJobCellClick: (jobId?: string) => void;
   onReset: () => void;
+  handleRemoveOnlyMemo: () => void;
 }
 
 export default function MemoSheet({
@@ -24,6 +25,7 @@ export default function MemoSheet({
   onJobClick,
   onJobCellClick,
   onReset,
+  handleRemoveOnlyMemo,
 }: MemoSheetProps) {
   // const [showTokenSelector, setShowTokenSelector] = useState<string | null>(
   //   null
@@ -81,9 +83,14 @@ export default function MemoSheet({
             시간대 추가
           </button> */}
           <button
+            onClick={handleRemoveOnlyMemo}
+            className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded">
+            메모만 지우기
+          </button>
+          <button
             onClick={onReset}
             className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded">
-            초기화
+            전체 초기화
           </button>
         </div>
       </div>
