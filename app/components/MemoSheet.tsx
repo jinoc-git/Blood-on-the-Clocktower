@@ -25,9 +25,9 @@ export default function MemoSheet({
   onJobCellClick,
   onReset,
 }: MemoSheetProps) {
-  const [showTokenSelector, setShowTokenSelector] = useState<string | null>(
-    null
-  );
+  // const [showTokenSelector, setShowTokenSelector] = useState<string | null>(
+  //   null
+  // );
   const [maxRows, setMaxRows] = useState(8);
   const [periods, setPeriods] = useState(PERIODS);
 
@@ -43,17 +43,17 @@ export default function MemoSheet({
     }
   };
 
-  const addPeriod = () => {
-    const lastPeriod = periods[periods.length - 1];
-    const match = lastPeriod.match(/^(day|night)(\d+)$/);
-    if (match) {
-      const [, type, num] = match;
-      const nextNum = parseInt(num);
-      const newPeriod =
-        type === 'night' ? `day${nextNum + 1}` : `night${nextNum + 1}`;
-      setPeriods([...periods, newPeriod]);
-    }
-  };
+  // const addPeriod = () => {
+  //   const lastPeriod = periods[periods.length - 1];
+  //   const match = lastPeriod.match(/^(day|night)(\d+)$/);
+  //   if (match) {
+  //     const [, type, num] = match;
+  //     const nextNum = parseInt(num);
+  //     const newPeriod =
+  //       type === 'night' ? `day${nextNum + 1}` : `night${nextNum + 1}`;
+  //     setPeriods([...periods, newPeriod]);
+  //   }
+  // };
 
   const formatPeriod = (period: string) => {
     if (period === 'night0') return '0번째 밤';
@@ -75,11 +75,11 @@ export default function MemoSheet({
             className="px-4 py-2 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-300 text-white rounded">
             행 추가 ({maxRows}/15)
           </button>
-          <button
+          {/* <button
             onClick={addPeriod}
             className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded">
             시간대 추가
-          </button>
+          </button> */}
           <button
             onClick={onReset}
             className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded">
