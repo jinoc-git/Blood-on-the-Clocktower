@@ -35,8 +35,10 @@ export default function MemoSheet({
 
   useEffect(() => {
     const item = localStorage.getItem('blood-on-the-clocktower');
-    const memoLen = Object.keys(JSON.parse(item)).length;
-    setMaxRows(memoLen > INIT_ROW ? memoLen : INIT_ROW);
+    if (item) {
+      const memoLen = Object.keys(JSON.parse(item)).length;
+      setMaxRows(memoLen > INIT_ROW ? memoLen : INIT_ROW);
+    }
   }, []);
 
   // Create array of rows (some may be empty)
