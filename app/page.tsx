@@ -6,6 +6,7 @@ import JobModal from './components/JobModal';
 import JobSelectorModal from './components/JobSelectorModal';
 import NavigationBar from './components/NavigationBar';
 import { Job, MemoData, Token } from './types';
+import { ErrorBoundary } from 'next/dist/client/components/error-boundary';
 
 export default function Home() {
   const [selectedJobs, setSelectedJobs] = useState<Job[]>([]);
@@ -17,10 +18,14 @@ export default function Home() {
   useEffect(() => {
     const item = localStorage.getItem('blood-on-the-clocktower');
     if (item) {
-      const parsedItem = JSON.parse(item) as MemoData;
-      setMemoData(parsedItem);
-      const jobInfos = Object.values(parsedItem).map((j) => j.info);
-      setSelectedJobs(jobInfos);
+      try {
+        const parsedItem = JSON.parse(item) as MemoData;
+        setMemoData(parsedItem);
+        const jobInfos = Object.values(parsedItem).map((j) => j.info);
+        setSelectedJobs(jobInfos);
+      } catch (error) {
+        localStorage.setItem('blood-on-the-clocktower', JSON.stringify({}));
+      }
     }
   }, []);
 
@@ -132,39 +137,43 @@ export default function Home() {
     setIsJobSelectorOpen(true);
   };
 
-  return (
-    <main className="min-h-screen bg-gray-100">
-      <NavigationBar />
-      <div className="max-w-full mx-auto p-4">
-        <h1 className="text-3xl font-bold text-center mb-4 text-gray-800">
-          시계탑에 흐른 피 - 메모 시트
-        </h1>
+  try {
+    return (
+      <main className="min-h-screen bg-gray-100">
+        <NavigationBar />
+        <div className="max-w-full mx-auto p-4">
+          <h1 className="text-3xl font-bold text-center mb-4 text-gray-800">
+            시계탑에 흐른 피 - 메모 시트
+          </h1>
+          <MemoSheet
+            selectedJobs={selectedJobs}
+            memoData={memoData}
+            onMemoUpdate={handleMemoUpdate}
+            // onTokenUpdate={handleTokenUpdate}
+            onJobRemove={handleJobRemove}
+            onJobClick={handleJobClick}
+            onJobCellClick={handleJobCellClick}
+            onReset={resetSheet}
+          />
+        </div>
 
-        <MemoSheet
-          selectedJobs={selectedJobs}
-          memoData={memoData}
-          onMemoUpdate={handleMemoUpdate}
-          // onTokenUpdate={handleTokenUpdate}
-          onJobRemove={handleJobRemove}
-          onJobClick={handleJobClick}
-          onJobCellClick={handleJobCellClick}
-          onReset={resetSheet}
+        <JobModal
+          job={selectedJob}
+          isOpen={isJobModalOpen}
+          onClose={() => setIsJobModalOpen(false)}
         />
-      </div>
 
-      <JobModal
-        job={selectedJob}
-        isOpen={isJobModalOpen}
-        onClose={() => setIsJobModalOpen(false)}
-      />
-
-      <JobSelectorModal
-        isOpen={isJobSelectorOpen}
-        onJobSelect={handleJobSelect}
-        onClose={() => {
-          setIsJobSelectorOpen(false);
-        }}
-      />
-    </main>
-  );
+        <JobSelectorModal
+          isOpen={isJobSelectorOpen}
+          onJobSelect={handleJobSelect}
+          onClose={() => {
+            setIsJobSelectorOpen(false);
+          }}
+        />
+      </main>
+    );
+  } catch (error) {
+    localStorage.setItem('blood-on-the-clocktower', JSON.stringify({}));
+    window.location.reload();
+  }
 }
