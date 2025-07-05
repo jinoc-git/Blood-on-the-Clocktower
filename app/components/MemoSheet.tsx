@@ -55,15 +55,15 @@ export default function MemoSheet({
   //   }
   // };
 
-  const formatPeriod = (period: string) => {
-    if (period === 'night0') return '0번째 밤';
-    const match = period.match(/^(day|night)(\d+)$/);
-    if (match) {
-      const [, type, num] = match;
-      return type === 'day' ? `${num}번째 낮` : `${num}번째 밤`;
-    }
-    return period;
-  };
+  // const formatPeriod = (period: string) => {
+  //   if (period === 'night0') return '0번째 밤';
+  //   const match = period.match(/^(day|night)(\d+)$/);
+  //   if (match) {
+  //     const [, type, num] = match;
+  //     return type === 'day' ? `${num}번째 낮` : `${num}번째 밤`;
+  //   }
+  //   return period;
+  // };
 
   return (
     <div className="p-4">
@@ -99,7 +99,8 @@ export default function MemoSheet({
                 <th
                   key={period}
                   className="border p-2 bg-gray-50 min-w-[120px]">
-                  {formatPeriod(period)}
+                  {/* {formatPeriod(period)} */}
+                  {period}
                 </th>
               ))}
             </tr>
