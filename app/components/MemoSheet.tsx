@@ -76,7 +76,7 @@ export default function MemoSheet({
   // };
 
   return (
-    <div className="p-4">
+    <div className="p-4 ">
       <div className="mb-4">
         <div className="flex justify-center space-x-4">
           <button
@@ -113,7 +113,7 @@ export default function MemoSheet({
               {PERIODS.map((period) => (
                 <th
                   key={period}
-                  className="border p-2 bg-gray-50 min-w-[120px]">
+                  className="border p-2 bg-gray-50 min-w-[150px] ">
                   {/* {formatPeriod(period)} */}
                   {period}
                 </th>
@@ -177,7 +177,7 @@ export default function MemoSheet({
                 </td> */}
 
                 {/* Job Cell */}
-                <td className="border p-2">
+                <td className="border p-2 sticky left-0 z-10 bg-gray-100">
                   {job ? (
                     <div className="flex items-center space-x-2">
                       <div
