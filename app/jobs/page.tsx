@@ -61,8 +61,13 @@ export default function JobsPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {categories.map((category) => (
-            <div key={category} className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-xl font-bold mb-4 text-center">
+            <div
+              key={category}
+              className="bg-transparent rounded-lg shadow-md p-6">
+              <h2
+                className={`text-xl font-bold mb-4 text-center rounded text-white ${getJobColor(
+                  category
+                )}`}>
                 {getCategoryTitle(category)}
               </h2>
 
