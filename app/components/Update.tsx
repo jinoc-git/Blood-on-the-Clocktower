@@ -1,10 +1,11 @@
 import React from 'react';
 
 export default function Update() {
-  const updatedNote = `(업데이트: 고스트 직업 설명 변경)`;
+  const updateDate = '(2025.07.07)';
+  const updatedNote = ` 고스트 직업 설명 변경 ${updateDate}`;
   return (
     <>
-      <span className=" text-sm">{updatedNote}</span>
+      <span className=" text-sm font-normal">업데이트:{updatedNote}</span>
     </>
   );
 }
