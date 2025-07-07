@@ -53,6 +53,29 @@ export default function MemoSheet({
     }
   };
 
+  const copyMemo = async (jobId: string) => {
+    let copyText = '';
+    const jobMemos = memoData[jobId]?.memos;
+    if (jobMemos) {
+      for (let [key, value] of Object.entries(jobMemos)) {
+        copyText += `${key}-${value}, `;
+      }
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      try {
+        await navigator.clipboard.writeText(copyText);
+
+        return true;
+      } catch (err) {
+        console.error('Clipboard API 복사 실패:', err);
+        return false;
+      }
+    }
+
+    return false;
+  };
+
   // const addPeriod = () => {
   //   const lastPeriod = periods[periods.length - 1];
   //   const match = lastPeriod.match(/^(day|night)(\d+)$/);
@@ -181,7 +204,7 @@ export default function MemoSheet({
                 {/* Job Cell */}
                 <td className="border border-amber-950 p-2 sticky left-0 z-10 bg-[#feeac8]">
                   {job ? (
-                    <div className="flex items-center space-x-2">
+                    <div className="flex items-center space-x-2 ">
                       <div
                         className="w-12 h-12 relative cursor-pointer"
                         onClick={() => onJobClick(job)}>
@@ -201,6 +224,16 @@ export default function MemoSheet({
                         onClick={() => onJobClick(job)}>
                         {job.name}
                       </span>
+                      <button
+                        className=" absolute top-1 right-1 bg-[#FFFBED] py-1 rounded-md hover:bg-[#e3dfce]"
+                        onClick={() => copyMemo(job.id)}>
+                        <Image
+                          src={'/assets/icon/copy.svg'}
+                          width={18}
+                          height={18}
+                          alt="복사 아이콘"
+                        />
+                      </button>
                     </div>
                   ) : (
                     <button
