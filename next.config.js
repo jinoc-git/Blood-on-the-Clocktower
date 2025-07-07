@@ -9,6 +9,13 @@ const nextConfig = {
         pathname: '/p/mate234/1/**',
         search: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'i.imgur.com',
+        port: '',
+        pathname: '/**',
+        search: '',
+      },
     ],
   },
 };

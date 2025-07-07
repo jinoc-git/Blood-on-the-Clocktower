@@ -154,7 +154,7 @@ export default function Home() {
 
   try {
     return (
-      <main className="min-h-screen bg-gray-100">
+      <>
         <NavigationBar />
 
         <div className="max-w-full mx-auto p-4">
@@ -190,7 +190,7 @@ export default function Home() {
             setIsJobSelectorOpen(false);
           }}
         />
-      </main>
+      </>
     );
   } catch (error) {
     localStorage.setItem('blood-on-the-clocktower', JSON.stringify({}));

@@ -104,16 +104,18 @@ export default function MemoSheet({
       </div>
 
       <div className="overflow-x-auto">
-        <table className="w-full border-collapse border">
+        <table className="w-full border-collapse border backdrop-blur-sm">
           <thead>
             <tr>
-              <th className="border p-2 bg-gray-50 min-w-[40px]"></th>
-              {/* <th className="border p-2 bg-gray-50 min-w-[60px]">토큰</th> */}
-              <th className="border p-2 bg-gray-50 min-w-[150px]">직업</th>
+              <th className="border border-amber-950 p-2  min-w-[40px]"></th>
+              {/* <th className="border p-2  min-w-[60px]">토큰</th> */}
+              <th className="border border-amber-950 p-2  min-w-[150px]">
+                직업
+              </th>
               {PERIODS.map((period) => (
                 <th
                   key={period}
-                  className="border p-2 bg-gray-50 min-w-[150px] ">
+                  className="border border-amber-950 p-2  min-w-[150px] ">
                   {/* {formatPeriod(period)} */}
                   {period}
                 </th>
@@ -124,7 +126,7 @@ export default function MemoSheet({
             {displayJobs.map((job, index) => (
               <tr key={job?.id || `empty-${index}`}>
                 {/* Delete Cell */}
-                <td className="border p-1">
+                <td className="border border-amber-950 p-1">
                   {job && (
                     <button
                       onClick={() => onJobRemove(job.id)}
@@ -177,7 +179,7 @@ export default function MemoSheet({
                 </td> */}
 
                 {/* Job Cell */}
-                <td className="border p-2 sticky left-0 z-10 bg-gray-100">
+                <td className="border border-amber-950 p-2 sticky left-0 z-10 bg-[#feeac8]">
                   {job ? (
                     <div className="flex items-center space-x-2">
                       <div
@@ -195,7 +197,7 @@ export default function MemoSheet({
                         />
                       </div>
                       <span
-                        className="font-medium cursor-pointer hover:text-blue-600"
+                        className="font-medium cursor-pointer hover:text-blue-600 text-amber-950"
                         onClick={() => onJobClick(job)}>
                         {job.name}
                       </span>
@@ -211,14 +213,14 @@ export default function MemoSheet({
 
                 {/* Period Cells */}
                 {PERIODS.map((period) => (
-                  <td key={period} className="border p-1">
+                  <td key={period} className="border border-amber-950 p-1">
                     {job && (
                       <textarea
                         value={memoData[job.id]?.memos[period] || ''}
                         onChange={(e) =>
                           onMemoUpdate(job.id, period, e.target.value)
                         }
-                        className="w-full h-20 p-1 text-sm resize-none border-none outline-none"
+                        className="w-full h-20 font-semibold p-1 text-sm resize-none border-none outline-none bg-transparent "
                         placeholder="메모..."
                       />
                     )}

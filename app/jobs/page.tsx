@@ -49,7 +49,7 @@ export default function JobsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div>
       <NavigationBar />
 
       <div className="container mx-auto p-4">
