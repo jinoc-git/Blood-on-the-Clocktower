@@ -58,7 +58,8 @@ export default function MemoSheet({
     const jobMemos = memoData[jobId]?.memos;
     if (jobMemos) {
       for (let [key, value] of Object.entries(jobMemos)) {
-        copyText += `${key}-${value}, `;
+        let val = value.trim() === '' ? '없음' : value.trim();
+        copyText += `${key}-${val}, `;
       }
     }
 

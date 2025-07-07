@@ -84,6 +84,16 @@ export default function Home() {
   const handleMemoUpdate = (jobId: string, period: string, value: string) => {
     setMemoData((prev) => {
       if (Object.keys(prev).length === 0) {
+        if (value.trim() === '') {
+          return {
+            [jobId]: {
+              info: selectedJobs.find((j) => j.id === jobId),
+              memos: {},
+              tokens: [],
+            },
+          };
+        }
+
         return {
           [jobId]: {
             info: selectedJobs.find((j) => j.id === jobId),
@@ -92,6 +102,20 @@ export default function Home() {
           },
         };
       } else {
+        if (value.trim() === '') {
+          const memos = { ...prev[jobId]?.memos, [period]: value };
+          delete memos[period];
+
+          return {
+            ...prev,
+            [jobId]: {
+              info: prev[jobId].info,
+              memos,
+              tokens: prev[jobId].tokens,
+            },
+          };
+        }
+
         return {
           ...prev,
           [jobId]: {
