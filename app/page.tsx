@@ -20,9 +20,20 @@ export default function Home() {
     if (item) {
       try {
         const parsedItem = JSON.parse(item) as MemoData;
-        setMemoData(parsedItem);
-        const jobInfos = Object.values(parsedItem).map((j) => j.info);
-        setSelectedJobs(jobInfos);
+
+        // 로컬스토리지 청소 (key가 옛날 버전일 때)
+        const isLastData = Object.values(parsedItem).some(({ memos }) =>
+          Object.keys(memos).some((v) => /[가-힣]/.test(v))
+        );
+        if (isLastData) {
+          setMemoData({});
+          setSelectedJobs([]);
+          localStorage.setItem('blood-on-the-clocktower', JSON.stringify({}));
+        } else {
+          setMemoData(parsedItem);
+          const jobInfos = Object.values(parsedItem).map((j) => j.info);
+          setSelectedJobs(jobInfos);
+        }
       } catch (error) {
         localStorage.setItem('blood-on-the-clocktower', JSON.stringify({}));
       }
