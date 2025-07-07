@@ -6,6 +6,7 @@ import JobModal from './components/JobModal';
 import JobSelectorModal from './components/JobSelectorModal';
 import NavigationBar from './components/NavigationBar';
 import { Job, MemoData } from './types';
+import Update from './components/Update';
 
 export default function Home() {
   const [selectedJobs, setSelectedJobs] = useState<Job[]>([]);
@@ -155,10 +156,14 @@ export default function Home() {
     return (
       <main className="min-h-screen bg-gray-100">
         <NavigationBar />
+
         <div className="max-w-full mx-auto p-4">
-          <h1 className="text-3xl font-bold text-center mb-4 text-gray-800">
+          <h1 className="text-3xl font-bold text-center mb-2 text-gray-800">
             시계탑에 흐른 피 - 메모 시트
+            <br />
+            <Update />
           </h1>
+
           <MemoSheet
             selectedJobs={selectedJobs}
             memoData={memoData}
