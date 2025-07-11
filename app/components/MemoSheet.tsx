@@ -60,7 +60,10 @@ export default function MemoSheet({
     try {
       if (jobMemos) {
         copyText += `${memoData[jobId].info.name}: `;
-        for (let [key, value] of Object.entries(jobMemos)) {
+        const sortedMemo = Object.entries(jobMemos).sort(
+          ([a], [b]) => parseInt(a[0]) - parseInt(b[0])
+        );
+        for (let [key, value] of sortedMemo) {
           let val = value.trim() === '' ? '없음' : value.trim();
           copyText += `${key}-${val}, `;
         }
