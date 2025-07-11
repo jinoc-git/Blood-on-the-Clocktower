@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Job, MemoData, Token } from '../types';
 import Image from 'next/image';
 import { PERIODS } from '../constants/periods';
+import toast from 'react-hot-toast';
 
 interface MemoSheetProps {
   selectedJobs: Job[];
@@ -65,16 +66,18 @@ export default function MemoSheet({
         }
       }
     } catch (error) {
-      console.error('복사 위 ', error);
+      toast.error('복사 실패..');
     }
 
     if (navigator.clipboard && navigator.clipboard.writeText) {
       try {
         await navigator.clipboard.writeText(copyText);
+        toast.success('복사 성공!');
 
         return true;
       } catch (err) {
-        console.error('Clipboard API 복사 실패:', err);
+        toast.error('복사 실패..');
+
         return false;
       }
     }
