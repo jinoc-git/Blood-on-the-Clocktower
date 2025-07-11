@@ -24,3 +24,152 @@ body {
   display: inline-block;
   margin: 1px;
 }
+
+/* Liquid Glass Table Styles */
+.liquid-glass-table {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass-table::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.liquid-glass-table::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    225deg,
+    rgba(59, 130, 246, 0.05) 0%,
+    rgba(147, 51, 234, 0.05) 50%,
+    rgba(236, 72, 153, 0.05) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.liquid-glass-table thead,
+.liquid-glass-table tbody {
+  position: relative;
+  z-index: 10;
+}
+
+.liquid-glass-table th,
+.liquid-glass-table td {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px);
+}
+
+.liquid-glass-table tbody tr {
+  transition: all 0.3s ease;
+}
+
+.liquid-glass-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.liquid-glass-job-cell {
+  position: sticky;
+  left: 0;
+  z-index: 20;
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass-job-cell::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.liquid-glass-job-cell::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.1) 0%,
+    rgba(147, 51, 234, 0.05) 50%,
+    rgba(236, 72, 153, 0.1) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.liquid-glass-job-cell > div {
+  position: relative;
+  z-index: 10;
+}
+
+.liquid-glass-copy-button {
+  position: absolute;
+  top: -14px;
+  right: -4px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  padding: 4px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
+}
+
+.liquid-glass-copy-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.liquid-glass-add-job-button {
+  width: 100%;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  color: rgb(107, 114, 128);
+  backdrop-filter: blur(4px);
+  transition: all 0.2s ease;
+  position: relative;
+  z-index: 10;
+}
+
+.liquid-glass-add-job-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}

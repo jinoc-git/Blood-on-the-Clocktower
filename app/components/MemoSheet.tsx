@@ -105,7 +105,7 @@ export default function MemoSheet({
   // };
 
   return (
-    <div className="p-4 ">
+    <div className="p-4 glassContainer">
       <div className="mb-4">
         <div className="flex justify-center space-x-4">
           <button
@@ -132,8 +132,8 @@ export default function MemoSheet({
         </div>
       </div>
 
-      <div className="overflow-x-auto">
-        <table className="w-full border-collapse border backdrop-blur-sm">
+      <div className="overflow-x-auto relative">
+        <table className="w-full border-collapse border liquid-glass-table">
           <thead>
             <tr>
               <th className="border border-amber-950 p-2  min-w-[40px]"></th>
@@ -208,9 +208,9 @@ export default function MemoSheet({
                 </td> */}
 
                 {/* Job Cell */}
-                <td className="border border-amber-950 p-2 sticky left-0 z-10 bg-[#feeac8]">
+                <td className="border border-amber-950 p-2 liquid-glass-job-cell">
                   {job ? (
-                    <div className="flex items-center space-x-2 ">
+                    <div className="flex items-center space-x-2">
                       <div
                         className="w-12 h-12 relative cursor-pointer"
                         onClick={() => onJobClick(job)}>
@@ -231,7 +231,7 @@ export default function MemoSheet({
                         {job.name}
                       </span>
                       <button
-                        className=" absolute top-1 right-1 bg-[#FFFBED] py-1 rounded-md hover:bg-[#e3dfce]"
+                        className="liquid-glass-copy-button"
                         onClick={() => copyMemo(job.id)}>
                         <Image
                           src={'/assets/icon/copy.svg'}
@@ -244,7 +244,7 @@ export default function MemoSheet({
                   ) : (
                     <button
                       onClick={() => onJobCellClick()}
-                      className="w-full h-12 bg-gray-100 hover:bg-gray-200 border-2 border-dashed border-gray-300 rounded text-gray-500">
+                      className="liquid-glass-add-job-button">
                       + 직업 추가
                     </button>
                   )}
