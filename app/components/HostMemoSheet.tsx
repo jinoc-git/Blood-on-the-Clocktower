@@ -141,7 +141,7 @@ export default function MemoSheet({
         </div>
       </div>
 
-      <div className="overflow-x-auto relative">
+      <div className="overflow-x-scroll relative">
         <table className="w-full border-collapse border liquid-glass-table">
           <thead>
             <tr>
@@ -151,9 +151,9 @@ export default function MemoSheet({
               {displayJobs.map((job, index) => (
                 <th
                   key={job?.id || `empty-${index}`}
-                  className="border border-amber-950 py-1 px-1 w-[180px] liquid-glass-job-cell relative">
+                  className="border border-amber-950 py-1 px-1 w-[100px] liquid-glass-job-cell relative">
                   {job ? (
-                    <div className="flex flex-col justify-center space-y-2 h-[74px]">
+                    <div className="flex flex-col justify-center space-y-2 w-[80px] h-[74px]">
                       <button
                         onClick={() => onJobRemove(job.id)}
                         className="absolute top-0 left-0 w-6 h-6 bg-red-500/50 hover:bg-red-600 text-white rounded text-xs z-10">
@@ -206,9 +206,9 @@ export default function MemoSheet({
           </thead>
           <tbody>
             {PERIODS.map((period, periodIndex) => (
-              <tr key={period}>
+              <tr key={period} className="w-[80px]">
                 {/* Period Cell */}
-                <td className="border border-amber-950 p-2 text-center">
+                <td className="border border-amber-950 p-2 w-[80px] text-center">
                   <span className="font-medium text-amber-950">{period}</span>
                 </td>
 
