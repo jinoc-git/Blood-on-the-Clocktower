@@ -272,7 +272,7 @@ export default function MemoSheet({
                             onMemoUpdate(job.id, period, e.target.value)
                           }
                           disabled={isDisable}
-                          className="w-full h-20 font-semibold p-1 text-sm resize-none border-none outline-none bg-transparent disabled:placeholder-center"
+                          className="w-full h-20 font-semibold p-1 text-sm resize-none border-none outline-none bg-transparent disabled:placeholder-center disabled:cursor-not-allowed"
                           placeholder={isDisable ? '❌' : '메모...'}
                         />
                       )}
