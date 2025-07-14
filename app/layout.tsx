@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className=" bg-[url(https://i.imgur.com/dXOYa9N.png/GK41rZ4.png)] min-h-screen bg-contain bg-fixed">
+        <main className=" bg-[url(https://i.imgur.com/m37opFZ.png/GK41rZ4.png)] min-h-screen bg-contain bg-fixed">
           <Provider>{children}</Provider>
         </main>
         <Script src="/liquid-glass.js" strategy="afterInteractive" />

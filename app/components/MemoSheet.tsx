@@ -88,6 +88,8 @@ export default function MemoSheet({
     return false;
   };
 
+  const isNoInfoFirstNight = (job: Job) => {};
+
   // const addPeriod = () => {
   //   const lastPeriod = periods[periods.length - 1];
   //   const match = lastPeriod.match(/^(day|night)(\d+)$/);
