@@ -145,7 +145,7 @@ export default function MemoSheet({
         <table className="w-full border-collapse border liquid-glass-table">
           <thead>
             <tr>
-              <th className="border border-amber-950 p-2 min-w-[80px] text-center">
+              <th className="border border-amber-950 p-2 w-[80px] text-center">
                 시간대
               </th>
               {displayJobs.map((job, index) => (
