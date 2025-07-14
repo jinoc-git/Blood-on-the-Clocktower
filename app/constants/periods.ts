@@ -12,7 +12,7 @@
 // ];
 
 export const PERIODS = [
-  '0 Day',
+  // '0 Day',
   '1 Day',
   '2 Day',
   '3 Day',
@@ -22,4 +22,5 @@ export const PERIODS = [
   '7 Day',
   '8 Day',
   '9 Day',
+  '10 Day',
 ];

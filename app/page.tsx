@@ -23,7 +23,7 @@ export default function Home() {
 
         // 로컬스토리지 청소 (key가 옛날 버전일 때)
         const isLastData = Object.values(parsedItem).some(({ memos }) =>
-          Object.keys(memos).some((v) => /[가-힣]/.test(v))
+          Object.keys(memos).some((v) => /[가-힣]/.test(v) || '0 Day' === v)
         );
         if (isLastData) {
           setMemoData({});
