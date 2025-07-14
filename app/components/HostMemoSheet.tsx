@@ -153,7 +153,7 @@ export default function MemoSheet({
                   key={job?.id || `empty-${index}`}
                   className="border border-amber-950 py-1 px-1 w-[100px] liquid-glass-job-cell relative">
                   {job ? (
-                    <div className="flex flex-col justify-center space-y-2 w-[80px] h-[74px]">
+                    <div className="flex flex-col justify-center space-y-2 h-[74px]">
                       <button
                         onClick={() => onJobRemove(job.id)}
                         className="absolute top-0 left-0 w-6 h-6 bg-red-500/50 hover:bg-red-600 text-white rounded text-xs z-10">
