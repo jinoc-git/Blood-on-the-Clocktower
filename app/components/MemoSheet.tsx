@@ -3,6 +3,7 @@ import { Job, MemoData, Token } from '../types';
 import Image from 'next/image';
 import { PERIODS } from '../constants/periods';
 import toast from 'react-hot-toast';
+import { NO_INFO_FIRST_NIGHT } from '../constants/noInfoFirstNight';
 
 interface MemoSheetProps {
   selectedJobs: Job[];
@@ -259,20 +260,25 @@ export default function MemoSheet({
                 </td>
 
                 {/* Period Cells */}
-                {PERIODS.map((period) => (
-                  <td key={period} className="border border-amber-950 p-1">
-                    {job && (
-                      <textarea
-                        value={memoData[job.id]?.memos[period] || ''}
-                        onChange={(e) =>
-                          onMemoUpdate(job.id, period, e.target.value)
-                        }
-                        className="w-full h-20 font-semibold p-1 text-sm resize-none border-none outline-none bg-transparent "
-                        placeholder="메모..."
-                      />
-                    )}
-                  </td>
-                ))}
+                {PERIODS.map((period, idx) => {
+                  const isDisable =
+                    NO_INFO_FIRST_NIGHT.includes(job?.id) && idx === 0;
+                  return (
+                    <td key={period} className="border border-amber-950 p-1">
+                      {job && (
+                        <textarea
+                          value={memoData[job.id]?.memos[period] || ''}
+                          onChange={(e) =>
+                            onMemoUpdate(job.id, period, e.target.value)
+                          }
+                          disabled={isDisable}
+                          className="w-full h-20 font-semibold p-1 text-sm resize-none border-none outline-none bg-transparent disabled:placeholder-center"
+                          placeholder={isDisable ? '❌' : '메모...'}
+                        />
+                      )}
+                    </td>
+                  );
+                })}
               </tr>
             ))}
           </tbody>

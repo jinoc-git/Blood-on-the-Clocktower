@@ -17,6 +17,7 @@ const nextConfig = {
         search: '',
       },
     ],
+    minimumCacheTTL: 60 * 60,
   },
 };
 
