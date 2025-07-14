@@ -17,7 +17,7 @@ interface MemoSheetProps {
   handleRemoveOnlyMemo: () => void;
 }
 
-const INIT_ROW = 8;
+const INIT_COLUMNS = 8;
 
 export default function MemoSheet({
   selectedJobs,
@@ -33,25 +33,25 @@ export default function MemoSheet({
   // const [showTokenSelector, setShowTokenSelector] = useState<string | null>(
   //   null
   // );
-  const [maxRows, setMaxRows] = useState(INIT_ROW);
+  const [maxColumns, setMaxColumns] = useState(INIT_COLUMNS);
 
   useEffect(() => {
     const item = localStorage.getItem('blood-on-the-clocktower');
     if (item) {
       const memoLen = Object.keys(JSON.parse(item)).length;
-      setMaxRows(memoLen > INIT_ROW ? memoLen : INIT_ROW);
+      setMaxColumns(memoLen > INIT_COLUMNS ? memoLen : INIT_COLUMNS);
     }
   }, []);
 
-  // Create array of rows (some may be empty)
+  // Create array of columns (some may be empty)
   const displayJobs = Array.from(
-    { length: maxRows },
+    { length: maxColumns },
     (_, index) => selectedJobs[index] || null
   );
 
-  const addRow = () => {
-    if (maxRows < 15) {
-      setMaxRows(maxRows + 1);
+  const addColumn = () => {
+    if (maxColumns < 15) {
+      setMaxColumns(maxColumns + 1);
     }
   };
 
@@ -118,10 +118,10 @@ export default function MemoSheet({
       <div className="mb-4">
         <div className="flex justify-center space-x-4">
           <button
-            onClick={addRow}
-            disabled={maxRows >= 15}
+            onClick={addColumn}
+            disabled={maxColumns >= 15}
             className="px-4 py-2 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-300 text-white rounded">
-            행 추가 ({maxRows}/15)
+            열 추가 ({maxColumns}/15)
           </button>
           {/* <button
             onClick={addPeriod}
@@ -145,110 +145,53 @@ export default function MemoSheet({
         <table className="w-full border-collapse border liquid-glass-table">
           <thead>
             <tr>
-              <th className="border border-amber-950 p-2  min-w-[40px]"></th>
-              {/* <th className="border p-2  min-w-[60px]">토큰</th> */}
-              <th className="border border-amber-950 p-2  min-w-[150px]">
-                직업
+              <th className="border border-amber-950 p-2 min-w-[80px] text-center">
+                시간대
               </th>
-              {PERIODS.map((period) => (
+              {displayJobs.map((job, index) => (
                 <th
-                  key={period}
-                  className="border border-amber-950 p-2  min-w-[150px] ">
-                  {/* {formatPeriod(period)} */}
-                  {period}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {displayJobs.map((job, index) => (
-              <tr key={job?.id || `empty-${index}`}>
-                {/* Delete Cell */}
-                <td className="border border-amber-950 p-1">
-                  {job && (
-                    <button
-                      onClick={() => onJobRemove(job.id)}
-                      className="w-8 h-8 bg-red-500 hover:bg-red-600 text-white rounded text-sm">
-                      ×
-                    </button>
-                  )}
-                </td>
-
-                {/* Token Cell */}
-                {/* <td className="border p-1">
-                  {job && (
-                    <div className="flex flex-col items-center">
-                      <div className="flex flex-wrap gap-1 justify-center mb-2">
-                        {(memoData[job.id]?.tokens || []).map((token) => (
-                          <div
-                            key={`${token.id}-${Date.now()}`}
-                            className="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center overflow-hidden"
-                            title={token.name}>
-                            <Image
-                              src={`/assets/tokens/${token.type}.png`}
-                              alt={token.name}
-                              width={20}
-                              height={20}
-                              className="object-cover"
-                              onError={(e) => {
-                                const target = e.target as HTMLImageElement;
-                                target.style.display = 'none';
-                                const parent = target.parentElement;
-                                if (parent) {
-                                  parent.innerHTML = `<span class="text-xs font-bold">${token.name.charAt(
-                                    0
-                                  )}</span>`;
-                                  parent.className =
-                                    'w-6 h-6 rounded-full bg-yellow-400 border border-yellow-600 flex items-center justify-center';
-                                }
-                              }}
-                            />
-                          </div>
-                        ))}
-                      </div>
-
-                      <button
-                        onClick={() => setShowTokenSelector(job.id)}
-                        className="w-6 h-6 bg-gray-200 hover:bg-gray-300 rounded text-sm">
-                        +
-                      </button>
-                    </div>
-                  )}
-                </td> */}
-
-                {/* Job Cell */}
-                <td className="border border-amber-950 p-2 liquid-glass-job-cell">
+                  key={job?.id || `empty-${index}`}
+                  className="border border-amber-950 py-1 px-1 w-[180px] liquid-glass-job-cell relative">
                   {job ? (
-                    <div className="flex items-center space-x-2">
-                      <div
-                        className="w-12 h-12 relative cursor-pointer"
-                        onClick={() => onJobClick(job)}>
-                        <Image
-                          src={job.image || '/assets/jobs/placeholder-job.png'}
-                          alt={job.name}
-                          fill
-                          className="object-cover rounded"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.src = '/assets/jobs/placeholder-job.png';
-                          }}
-                        />
-                      </div>
-                      <span
-                        className="font-medium cursor-pointer hover:text-blue-600 text-amber-950"
-                        onClick={() => onJobClick(job)}>
-                        {job.name}
-                      </span>
+                    <div className="flex flex-col justify-center space-y-2 h-[74px]">
                       <button
-                        className="liquid-glass-copy-button top-[-14px] right-[-4px] hover:bg-gray-300"
-                        onClick={() => copyMemo(job.id)}>
-                        <Image
-                          src={'/assets/icon/copy.svg'}
-                          width={18}
-                          height={18}
-                          alt="복사 아이콘"
-                        />
+                        onClick={() => onJobRemove(job.id)}
+                        className="absolute top-0 left-0 w-6 h-6 bg-red-500/50 hover:bg-red-600 text-white rounded text-xs z-10">
+                        ×
                       </button>
+                      <div className="flex items-center space-x-2">
+                        <div
+                          className="w-12 h-12 relative cursor-pointer"
+                          onClick={() => onJobClick(job)}>
+                          <Image
+                            src={
+                              job.image || '/assets/jobs/placeholder-job.png'
+                            }
+                            alt={job.name}
+                            fill
+                            className="object-cover rounded"
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              target.src = '/assets/jobs/placeholder-job.png';
+                            }}
+                          />
+                        </div>
+                        <span
+                          className="font-medium cursor-pointer hover:text-blue-600 text-amber-950"
+                          onClick={() => onJobClick(job)}>
+                          {job.name}
+                        </span>
+                        {/* <button
+                          className="absolute right-1 top-1 h-6 liquid-glass-copy-button z-10"
+                          onClick={() => copyMemo(job.id)}>
+                          <Image
+                            src={'/assets/icon/copy.svg'}
+                            width={18}
+                            height={18}
+                            alt="복사 아이콘"
+                          />
+                        </button> */}
+                      </div>
                     </div>
                   ) : (
                     <button
@@ -257,14 +200,26 @@ export default function MemoSheet({
                       + 직업 추가
                     </button>
                   )}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {PERIODS.map((period, periodIndex) => (
+              <tr key={period}>
+                {/* Period Cell */}
+                <td className="border border-amber-950 p-2 text-center">
+                  <span className="font-medium text-amber-950">{period}</span>
                 </td>
 
-                {/* Period Cells */}
-                {PERIODS.map((period, idx) => {
+                {/* Job Memo Cells */}
+                {displayJobs.map((job, jobIndex) => {
                   // const isDisable =
-                  //   NO_INFO_FIRST_NIGHT.includes(job?.id) && idx === 0;
+                  //   NO_INFO_FIRST_NIGHT.includes(job?.id) && periodIndex === 0;
                   return (
-                    <td key={period} className="border border-amber-950 p-1">
+                    <td
+                      key={job?.id || `empty-${jobIndex}`}
+                      className="border border-amber-950 p-1 h-[95px]">
                       {job && (
                         <textarea
                           value={memoData[job.id]?.memos[period] || ''}

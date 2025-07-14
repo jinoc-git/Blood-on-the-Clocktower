@@ -143,8 +143,6 @@ body {
 
 .liquid-glass-copy-button {
   position: absolute;
-  top: -14px;
-  right: -4px;
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(4px);
   padding: 4px;
