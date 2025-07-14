@@ -261,8 +261,8 @@ export default function MemoSheet({
 
                 {/* Period Cells */}
                 {PERIODS.map((period, idx) => {
-                  const isDisable =
-                    NO_INFO_FIRST_NIGHT.includes(job?.id) && idx === 0;
+                  // const isDisable =
+                  //   NO_INFO_FIRST_NIGHT.includes(job?.id) && idx === 0;
                   return (
                     <td key={period} className="border border-amber-950 p-1">
                       {job && (
@@ -271,9 +271,10 @@ export default function MemoSheet({
                           onChange={(e) =>
                             onMemoUpdate(job.id, period, e.target.value)
                           }
-                          disabled={isDisable}
+                          // disabled={isDisable}
                           className="w-full h-20 font-semibold p-1 text-sm resize-none border-none outline-none bg-transparent disabled:placeholder-center disabled:cursor-not-allowed"
-                          placeholder={isDisable ? '❌' : '메모...'}
+                          // placeholder={isDisable ? '❌' : '메모...'}
+                          placeholder="메모..."
                         />
                       )}
                     </td>
