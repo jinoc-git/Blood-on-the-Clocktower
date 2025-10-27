@@ -22,7 +22,7 @@ export default function RootLayout({
         <main className=" bg-[url(https://i.imgur.com/m37opFZ.png/GK41rZ4.png)] min-h-screen bg-contain bg-fixed">
           <Provider>{children}</Provider>
         </main>
-        <Script src="/liquid-glass.js" strategy="afterInteractive" />
+        {/* <Script src="/liquid-glass.js" strategy="afterInteractive" /> */}
       </body>
     </html>
   );
