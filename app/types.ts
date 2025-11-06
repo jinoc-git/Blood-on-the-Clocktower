@@ -44,3 +44,26 @@ export interface Token {
   id: string;
   name: string;
 }
+
+export interface NoteState {
+  memoData: MemoData;
+  selectedJobForModal: Job | null;
+  isJobModalOpen: boolean;
+  isJobSelectorOpen: boolean;
+  isInitialized: boolean;
+}
+
+export type NoteAction =
+  | { type: 'INITIALIZE_STATE'; payload: MemoData }
+  | { type: 'SELECT_JOB'; payload: Job }
+  | { type: 'REMOVE_JOB'; payload: string } // jobId
+  | {
+      type: 'UPDATE_MEMO';
+      payload: { jobId: string; period: string; value: string };
+    }
+  | { type: 'RESET_SHEET' }
+  | { type: 'REMOVE_ONLY_MEMO' }
+  | { type: 'OPEN_JOB_MODAL'; payload: Job }
+  | { type: 'CLOSE_JOB_MODAL' }
+  | { type: 'OPEN_JOB_SELECTOR' }
+  | { type: 'CLOSE_JOB_SELECTOR' };

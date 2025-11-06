@@ -1,5 +1,5 @@
 import { Job } from '../types';
-
+// 실제 사용하는 직업, JSON 파일의 내용 복붙
 export const JOBS: Job[] = [
   {
     id: '21',

@@ -1,3 +1,4 @@
+// 사용하지 않음
 const JOBS = [
   // 마을 주민 (Villagers)
   {
