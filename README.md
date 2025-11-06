@@ -1,24 +1,31 @@
-Welcome to the NextJS 13 base template bootstrapped using the `create-next-app`. This template supports TypeScript, but you can use normal JavaScript as well.
+# 온라인 게임 시계탑에 흐른 피 메모 시트
 
-## Getting Started
+시계탑에 흐른 피 플레이어를 위한 메모 시트 웹 페이지 입니다.
 
-Hit the run button to start the development server.
+## 페이지 구성
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### 메모 시트
 
-[Route Handlers](https://nextjs.org/docs/app/building-your-application/routing/route-handlers) allow you to create custom request handlers for a given route using the Web Request and Response APIs.
+플레이어가 메모를 하는 페이지입니다.
 
-The `app/api` directory is mapped to `/api/*`. Folders in this directory with files named `route.ts` are treated as [Route handlers](https://nextjs.org/docs/app/building-your-application/routing/route-handlers) instead of pages.
+- 직업 추가 버튼을 통해 메모하고 싶은 직업을 추가할 수 있습니다.
+- 직업 추가 후 직업 이름 또는 이미지를 클릭 시 직업 설명을 볼 수 있습니다.
+- 일자 별로 메모를 할 수 있으며 총 10일까지 메모할 수 있습니다.
+- 직업 별 메모는 직업 이름 우측 상단의 버튼을 통해 클립보드에 복사할 수 있습니다.
+- 행 추가 버튼을 통해 직업을 추가할 수 있는 행을 생성할 수 있습니다.
+- 메모만 지우기 버튼을 통해 추가한 직업은 유지한 상태로 메모 내용만 초기화할 수 있습니다.
+- 전체 초기화 버튼을 통해 추가한 직업과 메모 내용 전부 초기화할 수 있습니다.
 
-## Learn More
+### 직업 설명
 
-To learn more about Next.js, take a look at the following resources:
+현재 플레이하는 게임에서 플레이할 수 있는 직업들의 설명이 있습니다.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- 직업 별 진영을 확인할 수 있습니다.
+- 직업을 클릭 시 상세한 설명을 볼 수 있습니다.
 
-## Productionizing your Next App
+### 병아리 전용
 
-To make your next App run smoothly in production make sure to deploy your project with [Repl Deployments](https://docs.replit.com/hosting/deployments/about-deployments)!
+사회자를 위한 페이지입니다.
 
-You can also produce a production build by running `npm run build` and [changing the run command](https://docs.replit.com/programming-ide/configuring-repl#run) to `npm run start`.
+- 기능은 메모 시트 페이지와 동일합니다.
+- 사회자의 특성에 맞춰 행과 열이 메모 시트 페이지와 반대입니다.
