@@ -11,6 +11,13 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'botc.app',
+        port: '',
+        pathname: '/assets/**',
+        search: '',
+      },
+      {
+        protocol: 'https',
         hostname: 'i.imgur.com',
         port: '',
         pathname: '/**',

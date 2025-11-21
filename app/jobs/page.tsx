@@ -82,7 +82,11 @@ export default function JobsPage() {
                     onClick={() => handleJobClick(job)}>
                     <div className="w-12 h-12 mr-3 relative flex-shrink-0 bg-white rounded-full">
                       <Image
-                        src={job.image || '/assets/jobs/placeholder-job.png'}
+                        src={
+                          typeof job.image === 'string'
+                            ? job.image
+                            : job.image[0]
+                        }
                         alt={job.name}
                         fill
                         className="object-cover rounded"

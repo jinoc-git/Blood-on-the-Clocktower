@@ -20,17 +20,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="min-h-screen">
+        <main className=" bg-[url(https://i.imgur.com/m37opFZ.png/GK41rZ4.png)] min-h-screen bg-contain bg-fixed">
+          <Provider>{children}</Provider>
+        </main>
+        {/* <main className="min-h-screen">
           <Image
             src="https://i.imgur.com/m37opFZ.png"
             alt="Background"
             fill
             quality={75}
-            className="fixed w-full h-full z-[-1] object-cover "
+            className="fixed w-full h-full z-[-1] object-fit"
           />
-
-          <Provider>{children}</Provider>
-        </main>
+        <Provider>{children}</Provider>
+        </main> */}
         {/* <Script src="/liquid-glass.js" strategy="afterInteractive" /> */}
       </body>
     </html>

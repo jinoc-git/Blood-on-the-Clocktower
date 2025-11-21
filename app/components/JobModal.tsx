@@ -63,7 +63,7 @@ const JobModal: React.FC<JobModalProps> = ({ job, isOpen, onClose }) => {
             <div className="text-center space-y-2">
               <div className="bg-white rounded-full">
                 <Image
-                  src={job.image || '/assets/jobs/placeholder-job.png'}
+                  src={typeof job.image === 'string' ? job.image : job.image[0]}
                   alt={job.name}
                   width={80}
                   height={80}

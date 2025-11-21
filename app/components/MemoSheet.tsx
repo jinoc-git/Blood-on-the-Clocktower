@@ -224,7 +224,11 @@ export default function MemoSheet({
                         className="w-12 h-12 relative cursor-pointer"
                         onClick={() => onJobClick(job)}>
                         <Image
-                          src={job.image || '/assets/jobs/placeholder-job.png'}
+                          src={
+                            typeof job.image === 'string'
+                              ? job.image
+                              : job.image[0]
+                          }
                           alt={job.name}
                           fill
                           className="object-cover rounded"

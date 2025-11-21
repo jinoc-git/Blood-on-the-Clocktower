@@ -165,7 +165,9 @@ export default function MemoSheet({
                           onClick={() => onJobClick(job)}>
                           <Image
                             src={
-                              job.image || '/assets/jobs/placeholder-job.png'
+                              typeof job.image === 'string'
+                                ? job.image
+                                : job.image[0]
                             }
                             alt={job.name}
                             fill

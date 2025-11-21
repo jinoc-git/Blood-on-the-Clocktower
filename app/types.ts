@@ -17,7 +17,7 @@ export interface MemoData {
 type JobBaseType = {
   id: string;
   name: string;
-  image: string;
+  image: string | string[];
   ability: string;
   team: 'townsfolk' | 'outsider' | 'minion' | 'demon';
 };
@@ -28,6 +28,10 @@ export type Job = JobBaseType & {
   otherNight?: number;
   otherNightReminder?: string;
   reminders?: string[];
+  remindersGlobal?: string[];
+  jinxes?: Record<string, string>[];
+  special?: Record<string, string>[];
+  setup?: boolean;
 };
 
 export interface Token {

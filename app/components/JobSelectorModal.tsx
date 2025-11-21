@@ -51,7 +51,7 @@ export default function JobSelectorModal({
               `}>
               <div className="w-16 h-16 rounded-full bg-white p-2 mb-2 relative overflow-hidden">
                 <Image
-                  src={job.image || '/assets/jobs/placeholder-job.png'}
+                  src={typeof job.image === 'string' ? job.image : job.image[0]}
                   alt={job.name}
                   width={60}
                   height={60}
