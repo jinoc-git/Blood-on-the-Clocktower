@@ -18,7 +18,7 @@ interface MemoSheetProps {
 }
 
 const INIT_ROW = 8;
-const MAX_ROW = 16;
+const MAX_ROW = 18;
 
 export default function MemoSheet({
   selectedJobs,
