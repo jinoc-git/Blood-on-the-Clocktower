@@ -120,9 +120,9 @@ export default function MemoSheet({
         <div className="flex justify-center space-x-4">
           <button
             onClick={addRow}
-            disabled={maxRows >= 15}
+            disabled={maxRows >= MAX_ROW}
             className="px-4 py-2 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-300 text-white rounded">
-            행 추가 ({maxRows}/15)
+            행 추가 ({maxRows}/{MAX_ROW})
           </button>
           {/* <button
             onClick={addPeriod}
