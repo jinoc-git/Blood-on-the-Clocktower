@@ -18,6 +18,7 @@ interface MemoSheetProps {
 }
 
 const INIT_ROW = 8;
+const MAX_ROW = 16;
 
 export default function MemoSheet({
   selectedJobs,
@@ -50,7 +51,7 @@ export default function MemoSheet({
   );
 
   const addRow = () => {
-    if (maxRows < 15) {
+    if (maxRows < MAX_ROW) {
       setMaxRows(maxRows + 1);
     }
   };
