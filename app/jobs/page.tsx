@@ -4,7 +4,7 @@ import NavigationBar from '../components/NavigationBar';
 import JobModal from '../components/JobModal';
 import { Job } from '../types';
 import Image from 'next/image';
-import { JOBS } from '../data/삐약이의저주';
+import { JOBS_BA } from '../data/삐약이의저주';
 import Update from '../components/Update';
 
 export default function JobsPage() {
@@ -72,7 +72,7 @@ export default function JobsPage() {
               </h2>
 
               <div className="grid grid-cols-1 gap-3">
-                {JOBS.filter((job) => job.team === category).map((job) => (
+                {JOBS_BA.filter((job) => job.team === category).map((job) => (
                   <div
                     key={job.id}
                     className={`

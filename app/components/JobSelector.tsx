@@ -1,6 +1,6 @@
 import React from 'react';
 import { Job } from '../types';
-import { JOBS } from '../data/삐약이의저주';
+import { JOBS_BA } from '../data/삐약이의저주';
 
 interface JobSelectorProps {
   onJobSelect: (job: Job) => void;
@@ -56,7 +56,7 @@ const JobSelector: React.FC<JobSelectorProps> = ({
           </h3>
 
           <div className="grid grid-cols-1 gap-2">
-            {JOBS.filter((job) => job.team === category).map((job) => {
+            {JOBS_BA.filter((job) => job.team === category).map((job) => {
               const isSelected = selectedJobs.some((j) => j.id === job.id);
 
               return (

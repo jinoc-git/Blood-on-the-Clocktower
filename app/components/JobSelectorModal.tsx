@@ -1,7 +1,7 @@
 import React from 'react';
 import { Job } from '../types';
 import Image from 'next/image';
-import { JOBS } from '../data/삐약이의저주';
+import { JOBS_BA } from '../data/삐약이의저주';
 
 interface JobSelectorModalProps {
   isOpen: boolean;
@@ -41,7 +41,7 @@ export default function JobSelectorModal({
         <h2 className="text-2xl font-bold mb-6 text-center">직업 선택</h2>
 
         <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          {JOBS.map((job) => (
+          {JOBS_BA.map((job) => (
             <div
               key={job.id}
               onClick={() => onJobSelect(job)}
