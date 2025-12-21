@@ -11,10 +11,38 @@ export const JOBS_BA: Job[] = [
     team: 'townsfolk',
     ability:
       '얼마나 많은 악한 플레이어의 쌍이 있는지 알고 시작합니다. (3명이 붙어있으면 2쌍, 4명이 붙어있으면 3쌍입니다.)',
-    firstNight: 11,
+    firstNight: 7,
     otherNight: 0,
     firstNightReminder:
       '악한 참가자가 총 몇 쌍으로 인접했는지 숫자로 알려주세요.',
+  },
+  {
+    id: 'pursuer',
+    name: '추적자',
+    image: [
+      'https://www.bloodstar.xyz/p/mate234/2/2_2.png',
+      'https://www.bloodstar.xyz/p/mate234/2/2_2.png',
+    ],
+    team: 'townsfolk',
+    ability:
+      '당신과 가장 가까운 이방인과 본인 사이에 몇 명의 악팀이 있는지 알고 시작합니다.',
+    firstNight: 12,
+    otherNight: 0,
+    firstNightReminder:
+      '가장 가까운 이방인과 본인 사이에 몇 명의 악팀이 있는지 알려줍니다.',
+  },
+  {
+    id: 'wake1',
+    name: '웨이크',
+    image: [
+      'https://i.imgur.com/v0VawGH.png',
+      'https://i.imgur.com/TWZGwvi.png',
+    ],
+    team: 'townsfolk',
+    ability:
+      '첫날 밤, 플레이어를 2명 선택하세요. 그들 중 오늘 밤 깨어난 플레이어가 몇명인지 알게 됩니다. ( 깨어난 플레이어 = 오늘 밤 스토리텔러에게 밤편지를 받은 악팀 혹은 선한 플레이어 )',
+    firstNight: 0,
+    otherNight: 0,
   },
   {
     id: 'grandmother1',
@@ -26,26 +54,25 @@ export const JOBS_BA: Job[] = [
     team: 'townsfolk',
     ability:
       '선한 플레이어(손주) 1명과 그 캐릭터를 알고 시작합니다. 악마가 해당 플레이어를 죽이면 당신도 죽습니다.',
-    firstNight: 15,
-    otherNight: 16,
+    firstNight: 11,
+    otherNight: 11,
     firstNightReminder: '선한 플레이어 1명과 그 캐릭터를 알려주세요.',
     otherNightReminder: '손주 플레이어가 죽으면, 할머니도 죽습니다.',
     reminders: ['죽음', '손주'],
   },
   {
-    id: 'shugenja1',
-    name: '슈겐자',
+    id: 'marksman',
+    name: '명사수',
     image: [
-      'https://botc.app/assets/shugenja_g-DAlTPOOn.webp',
-      'https://botc.app/assets/shugenja_e-DQCYsHfD.webp',
+      'https://www.bloodstar.xyz/p/mate234/3/_3.png',
+      'https://www.bloodstar.xyz/p/mate234/3/_3.png',
     ],
     team: 'townsfolk',
     ability:
-      '가장 가까운 악한 플레이어가 시계 방향인지 반시계 방향인지 알고 시작합니다. 양 옆 악팀의 거리가 똑같다면 스토리텔러 재량입니다.',
-    firstNight: 17,
+      '게임당 한 번, 밤에 플레이어 1명을 선택하세요. 그가 하수인이라면 죽습니다.',
+    firstNight: 0,
     otherNight: 0,
-    firstNightReminder:
-      '가장 가까운 악한 플레이어가 시계 방향인지 반시계 방향인지 알려줍니다.',
+    reminders: ['능력없음'],
   },
   {
     id: 'fortuneteller1',
@@ -57,8 +84,8 @@ export const JOBS_BA: Job[] = [
     team: 'townsfolk',
     ability:
       '매일 밤, 플레이어 2명을 선택합니다. 그중 악마가 있는지 알게 됩니다. 당신에게 악마로 보이는 선한 플레이어(붉은 청어)가 1명 있습니다.',
-    firstNight: 14,
-    otherNight: 21,
+    firstNight: 10,
+    otherNight: 16,
     firstNightReminder:
       '플레이어 2명을 선택하게 합니다. 그중 악마나 붉은 청어가 있다면 이를 알려줍니다.',
     otherNightReminder:
@@ -75,8 +102,8 @@ export const JOBS_BA: Job[] = [
     team: 'townsfolk',
     ability:
       '매일 밤, 살아있는 양 옆의 플레이어 중 몇 명이 악한 진영인지 알게 됩니다.',
-    firstNight: 12,
-    otherNight: 19,
+    firstNight: 8,
+    otherNight: 14,
     firstNightReminder:
       '초공감자의 살아있는 이웃 2명 중 몇 명이 악한지 알려주세요.',
     otherNightReminder:
@@ -92,63 +119,10 @@ export const JOBS_BA: Job[] = [
     team: 'townsfolk',
     ability:
       '매일 밤, 당신은 참가 중인 악한 캐릭터를 하나씩 알게 됩니다. 악마는 지니어스가 참가 중임을 알고 있습니다.',
-    firstNight: 13,
-    otherNight: 20,
+    firstNight: 9,
+    otherNight: 15,
     firstNightReminder: '지니어스를 깨워 악팀의 종류를 알려주세요.',
     otherNightReminder: '지니어스를 깨워 악팀의 종류를 알려주세요.',
-  },
-  {
-    id: 'mathematician1',
-    name: '수학자',
-    image: [
-      'https://botc.app/assets/mathematician_g-CYQ5a9XP.webp',
-      'https://botc.app/assets/mathematician_e-DOTUnrYp.webp',
-    ],
-    team: 'townsfolk',
-    ability:
-      '매일 밤, 새벽부터 다른 캐릭터의 능력으로 인해 자신의 능력이 비정상적으로 작동한 플레이어의 수를 알게 됩니다.',
-    firstNight: 20,
-    otherNight: 26,
-    firstNightReminder:
-      '다른 캐릭터의 능력으로 인해 능력이 비정상적으로 작동한 플레이어의 수를 알려줍니다.',
-    otherNightReminder:
-      '다른 캐릭터의 능력으로 인해 능력이 비정상적으로 작동한 플레이어의 수를 알려줍니다.',
-    reminders: [
-      '비정상',
-      '비정상',
-      '비정상',
-      '비정상',
-      '비정상',
-      '비정상',
-      '비정상',
-    ],
-    jinxes: [
-      {
-        id: 'wake1',
-        reason:
-          '웨이크가 먼저 깨어나더라도 웨이크는 수학자가 오늘 밤 깨어나는지 여부를 알 수 있습니다.',
-      },
-      {
-        id: 'chambermaid1',
-        reason:
-          '하녀가 먼저 깨어나더라도 하녀는 수학자가 오늘 밤 깨어나는지 여부를 알 수 있습니다.',
-      },
-      {
-        id: 'drunk1',
-        reason:
-          '수학자는 주정뱅이의 능력이 잘못 작동하거나 거짓 정보를 받았을 때, 이를 감지할 수도 있습니다.',
-      },
-      {
-        id: 'lunatic1',
-        reason:
-          '수학자는 미치광이가 선택한 사람이 악마가 실제로 공격한 사람과 다를 경우 이를 감지할 수도 있습니다.',
-      },
-      {
-        id: 'marionette1',
-        reason:
-          '수학자는 꼭두각시의 능력이 잘못 작동하거나 거짓 정보를 받았을 때, 이를 감지할 수도 있습니다.',
-      },
-    ],
   },
   {
     id: 'oracle1',
@@ -159,9 +133,9 @@ export const JOBS_BA: Job[] = [
     ],
     team: 'townsfolk',
     ability:
-      '매일 밤*, 당신은 죽은 플레이어 중 악한 진영이 얼마나 있는지 알게 됩니다.(마지막 밤에 죽은 플레이어 포함)',
+      '매일 밤, 당신은 죽은 플레이어 중 악한 진영이 얼마나 있는지 알게 됩니다. (마지막 밤에 죽은 플레이어 포함)',
     firstNight: 0,
-    otherNight: 23,
+    otherNight: 18,
     otherNightReminder:
       '죽은 플레이어 중 악한 진영이 얼마나 있는지 알려줍니다.',
   },
@@ -173,9 +147,9 @@ export const JOBS_BA: Job[] = [
       'https://botc.app/assets/undertaker_e-DVB8aMO4.webp',
     ],
     team: 'townsfolk',
-    ability: '매일 밤*, 오늘 낮에 처형 된 플레이어의 캐릭터를 알게 됩니다',
+    ability: '매일 밤, 오늘 낮에 처형 된 플레이어의 캐릭터를 알게 됩니다',
     firstNight: 0,
-    otherNight: 22,
+    otherNight: 17,
     otherNightReminder: '오늘 처형된 플레이어의 캐릭터를 알려줍니다.',
     reminders: ['오늘 처형'],
   },
@@ -194,37 +168,6 @@ export const JOBS_BA: Job[] = [
     reminders: ['호위무사1', '호위무사2', '호위무사3'],
   },
   {
-    id: 'wake1',
-    name: '웨이크',
-    image: [
-      'https://i.imgur.com/v0VawGH.png',
-      'https://i.imgur.com/TWZGwvi.png',
-    ],
-    team: 'townsfolk',
-    ability:
-      '첫날 밤, 플레이어를 2명 선택하세요. 그들 중 오늘 밤 깨어난 플레이어가 몇명인지 알게 됩니다. ( 깨어난 플레이어 = 오늘 밤 스토리텔러에게 밤편지를 받은 악팀 혹은 시민 플레이어 )',
-    firstNight: 0,
-    otherNight: 0,
-  },
-  {
-    id: 'seamstress1',
-    name: '재봉사',
-    image: [
-      'https://botc.app/assets/seamstress_g-B4RHsroR.webp',
-      'https://botc.app/assets/seamstress_e-BfBRBNhv.webp',
-    ],
-    team: 'townsfolk',
-    ability:
-      '게임당 한 번, 밤에 본인을 제외하고 플레이어 2명을 선택할 수 있습니다. 해당 플레이어들이 같은 진영인지 알게 됩니다.',
-    firstNight: 16,
-    otherNight: 24,
-    firstNightReminder:
-      '플레이어 2명을 선택했다면, 해당 플레이어들이 같은 진영인지 알려줍니다.',
-    otherNightReminder:
-      '플레이어 2명을 선택했다면, 해당 플레이어들이 같은 진영인지 알려줍니다.',
-    reminders: ['무능력'],
-  },
-  {
     id: 'professor1',
     name: '교수',
     image: [
@@ -235,7 +178,7 @@ export const JOBS_BA: Job[] = [
     ability:
       '게임당 한 번, 밤*에 죽은 플레이어를 선택하세요. 해당 플레이어가 마을 주민이라면 부활하며 부활 한 플레이어의 능력도 같은 밤에 함께 부활합니다.',
     firstNight: 0,
-    otherNight: 14,
+    otherNight: 10,
     otherNightReminder:
       '플레이어를 선택할 수 있습니다. 해당 플레이어가 주민이라면 부활합니다.',
     reminders: ['무능력', '부활'],
@@ -289,20 +232,6 @@ export const JOBS_BA: Job[] = [
     reminders: ['짐', '이김'],
   },
   {
-    id: 'slayer1',
-    name: '슬레이어',
-    image: [
-      'https://botc.app/assets/slayer_g-BO_75tK_.webp',
-      'https://botc.app/assets/slayer_e-4pQk5kJR.webp',
-    ],
-    team: 'townsfolk',
-    ability:
-      '게임당 한 번, 낮에 공개적으로 플레이어를 1명 선택해 화살을 쏘세요. 해당 플레이어가 악마라면 그는 죽습니다.',
-    firstNight: 0,
-    otherNight: 0,
-    reminders: ['무능력'],
-  },
-  {
     id: 'ravenkeeper1',
     name: '레이븐키퍼',
     image: [
@@ -313,23 +242,9 @@ export const JOBS_BA: Job[] = [
     ability:
       '당신은 밤에 죽으면 깨어나 플레이어를 1명 선택합니다. 해당 플레이어의 캐릭터를 알게 됩니다.',
     firstNight: 0,
-    otherNight: 17,
+    otherNight: 12,
     otherNightReminder:
       '밤에 죽으면, 깨어나 플레이어를 1명 선택합니다. 해당 플레이어의 캐릭터를 알려줍니다.',
-  },
-  {
-    id: 'awakenchick1',
-    name: '각성한 병아리',
-    image: [
-      'https://i.imgur.com/nKs66nx.png',
-      'https://i.imgur.com/fZVUSc3.png',
-    ],
-    team: 'townsfolk',
-    ability:
-      '각성한 병아리는 독을 맞거나 중독 상태여도 딱 한번 악마에게 죽지 않습니다. 당신을 포함하여 3명만 살아있을 때, 아무도 처형되지 않으면 시민의 승리입니다.',
-    firstNight: 0,
-    otherNight: 0,
-    reminders: ['무능력'],
   },
   {
     id: 'drunk1',
@@ -350,10 +265,24 @@ export const JOBS_BA: Job[] = [
         type: 'selection',
       },
       {
-        type: 'reveal',
         name: 'replace-character',
+        type: 'reveal',
       },
     ],
+  },
+  {
+    id: 'puzzlemaster1',
+    name: '퍼즐마스터',
+    image: [
+      'https://www.bloodstar.xyz/p/mate234/2/3_2.png',
+      'https://www.bloodstar.xyz/p/mate234/2/3_2.png',
+    ],
+    team: 'outsider',
+    ability:
+      '한 명은 취한 상태입니다. 당신이 죽어도 마찬가지입니다. 게임당 한 번 퍼즐마스터는 언제든지 취한 플레이어를 추측합니다. 맞다면 진짜 악마를 알게 되지만 틀리다면 선한 플레이어를 악마로 알게 됩니다.',
+    firstNight: 0,
+    otherNight: 0,
+    reminders: ['능력없음'],
   },
   {
     id: 'tinker1',
@@ -365,84 +294,9 @@ export const JOBS_BA: Job[] = [
     team: 'outsider',
     ability: '당신은 언제든지 죽을 수도 있습니다.',
     firstNight: 0,
-    otherNight: 12,
+    otherNight: 9,
     otherNightReminder: '땜장이는 언제든지 죽을 수도 있습니다.',
     reminders: ['죽음'],
-  },
-  {
-    id: 'saint1',
-    name: '성자',
-    image: [
-      'https://botc.app/assets/saint_g-BU0hab0E.webp',
-      'https://botc.app/assets/saint_e-CnQBC4rO.webp',
-    ],
-    team: 'outsider',
-    ability: '만약 당신이 처형으로 죽으면, 즉시 시민의 패배입니다.',
-    firstNight: 0,
-    otherNight: 0,
-  },
-  {
-    id: 'plaguedoctor1',
-    name: '역병 의사',
-    image: [
-      'https://botc.app/assets/plaguedoctor_g-DUqDeP9l.webp',
-      'https://botc.app/assets/plaguedoctor_e-DdVqxJ_g.webp',
-    ],
-    team: 'outsider',
-    ability:
-      '만약 당신이 죽으면, 이야기꾼은 하수인 능력을 1가지 얻으며 그 능력은 시민에게 불리하게 사용됩니다.',
-    firstNight: 0,
-    otherNight: 13,
-    otherNightReminder:
-      '역병 의사가 죽을 때, 이야기꾼은 하수인 능력을 얻습니다. 까먹었다면, 지금부터라도 하세요.',
-    reminders: ['이야기꾼 능력'],
-    jinxes: [
-      {
-        id: 'baron1',
-        reason:
-          '이야기꾼이 남작의 능력을 얻게되면, 최대 2명의 플레이어가 외지인이 됩니다.',
-      },
-      {
-        id: 'boomdandy1',
-        reason:
-          '이야기꾼이 폭탄광 능력을 얻게되면, 플레이어 1명이 폭탄광이 됩니다.',
-      },
-      {
-        id: 'eviltwin1',
-        reason:
-          '이야기꾼이 사악한 쌍둥이 능력을 얻게되면, 플레이어 1명이 사악한 쌍둥이가 됩니다.',
-      },
-      {
-        id: 'fearmonger1',
-        reason:
-          '이야기꾼이 공포조장가 능력을 얻게되면, 하수인 중 1명이 그 능력을 추가로 얻고, 이 사실을 알게 됩니다.',
-      },
-      {
-        id: 'goblin1',
-        reason:
-          '이야기꾼이 고블린 능력을 얻게되면, 하수인 중 1명이 그 능력을 추가로 얻고, 이 사실을 알게 됩니다.',
-      },
-      {
-        id: 'marionette1',
-        reason:
-          '이야기꾼이 꼭두각시 능력을 얻게되면, 악마의 살아있는 선한 이웃 중 하나가 꼭두각시가 됩니다.',
-      },
-      {
-        id: 'scarletwoman1',
-        reason:
-          '이야기꾼이 부정한 여인 능력을 얻게되면, 하수인 중 1명이 그 능력을 추가로 얻고, 이 사실을 알게 됩니다.',
-      },
-      {
-        id: 'spy1',
-        reason:
-          '이야기꾼이 스파이 능력을 얻게되면, 하수인 중 1명이 그 능력을 추가로 얻고, 이 사실을 알게 됩니다.',
-      },
-      {
-        id: 'wraith1',
-        reason:
-          '이야기꾼이 레이스 능력을 얻게되면, 하수인 중 1명이 그 능력을 추가로 얻고, 이 사실을 알게 됩니다.',
-      },
-    ],
   },
   {
     id: 'damsel1',
@@ -453,9 +307,9 @@ export const JOBS_BA: Job[] = [
     ],
     team: 'outsider',
     ability:
-      '살아있다면 숨으세요. 모든 하수인들은 소녀가 참여하고 있다는 것을 알고 있습니다. 하수인이 딱 1번 공개적으로 당신을 추측하면 시민의 패배입니다.',
-    firstNight: 5,
-    otherNight: 18,
+      '살아있다면 숨으세요. 모든 하수인들은 소녀가 참여하고 있다는 것을 알고 있습니다. 딱 1번 하수인이 당신을 추측하면 시민의 패배입니다.',
+    firstNight: 4,
+    otherNight: 13,
     firstNightReminder:
       "모든 하수인을 깨워, '이 캐릭터가 당신을 선택했습니다.' 카드와 아가씨의 캐릭터 토큰을 보여줍니다.",
     otherNightReminder:
@@ -472,7 +326,7 @@ export const JOBS_BA: Job[] = [
     team: 'minion',
     ability:
       '매일 밤, 플레이어를 1명 선택하세요. 해당 플레이어는 하루동안 능력이 거꾸로 작동합니다.',
-    firstNight: 6,
+    firstNight: 5,
     otherNight: 2,
     firstNightReminder:
       '플레이어를 1명 선택합니다. 해당 플레이어는 다음 날 저녁까지 중독됩니다.',
@@ -481,22 +335,35 @@ export const JOBS_BA: Job[] = [
     reminders: ['중독'],
   },
   {
-    id: 'devilsadvocate1',
-    name: '선의의 비판자',
+    id: 'godfather1',
+    name: '대부',
     image: [
-      'https://botc.app/assets/devilsadvocate_e-6olcm7Cx.webp',
-      'https://botc.app/assets/devilsadvocate_g-DeyJHzxG.webp',
+      'https://www.bloodstar.xyz/p/mate234/3/1_3.png',
+      'https://www.bloodstar.xyz/p/mate234/3/1_3.png',
     ],
     team: 'minion',
     ability:
-      '매일 밤, 어제와 다른 살아있는 플레이어를 1명 선택합니다. 해당 플레이어는 내일 처형되더라도 죽지 않습니다.',
-    firstNight: 7,
-    otherNight: 3,
+      '이 판에 어떤 이방인이 참여중인지 알고 시작합니다. 낮에 이방인이 처형되면 그날 밤 1명의 플레이어를 선택하세요. 그는 죽습니다. [+1 이방인 혹은 -1 이방인]',
+    firstNight: 15,
+    otherNight: 0,
     firstNightReminder:
-      '살아있는 플레이어를 1명 선택합니다. 해당 플레이어는 내일 처형되더라도 죽지 않습니다.',
-    otherNightReminder:
-      '어제와 다른 살아있는 플레이어를 1명 선택합니다. 해당 플레이어는 내일 처형되더라도 죽지 않습니다.',
-    reminders: ['처형 불가'],
+      '대부를 깨워 이 판에 어떤 이방인이 참여중인지 모두 알려주세요',
+  },
+  {
+    id: 'witch1',
+    name: '마녀',
+    image: [
+      'https://botc.app/assets/witch_e-D4AS1R1Q.webp',
+      'https://botc.app/assets/witch_g-CI6rg-Tb.webp',
+    ],
+    team: 'minion',
+    ability:
+      '매일 밤, 플레이어를 1명 선택합니다. 해당 플레이어는 다음 낮에 누군가를 지목하면 죽습니다. 플레이어 3명만 살아있으면 이 능력을 잃습니다.',
+    firstNight: 6,
+    otherNight: 3,
+    firstNightReminder: '플레이어를 1명 선택하게 하세요.',
+    otherNightReminder: '플레이어를 1명 선택하게 하세요.',
+    reminders: ['저주'],
   },
   {
     id: 'spy1',
@@ -508,8 +375,8 @@ export const JOBS_BA: Job[] = [
     team: 'minion',
     ability:
       '매일 밤, 당신은 마도서(모든 플레이어의 직업)를 봅니다. 당신은 죽어서도 조사직에게 시민이나 이방인으로 보일 수 있습니다.',
-    firstNight: 18,
-    otherNight: 25,
+    firstNight: 13,
+    otherNight: 19,
     firstNightReminder: '스파이에게 마도서를 보여주세요.',
     otherNightReminder: '스파이에게 마도서를 보여주세요.',
     jinxes: [
@@ -530,27 +397,11 @@ export const JOBS_BA: Job[] = [
     ],
     special: [
       {
-        type: 'signal',
         name: 'grimoire',
         time: 'night',
+        type: 'signal',
       },
     ],
-  },
-  {
-    id: 'witch1',
-    name: '마녀',
-    image: [
-      'https://botc.app/assets/witch_e-D4AS1R1Q.webp',
-      'https://botc.app/assets/witch_g-CI6rg-Tb.webp',
-    ],
-    team: 'minion',
-    ability:
-      '매일 밤, 플레이어를 1명 선택합니다. 해당 플레이어는 다음 낮에 누군가를 지목하면 죽습니다. 플레이어 3명만 살아있으면 이 능력을 잃습니다.',
-    firstNight: 8,
-    otherNight: 4,
-    firstNightReminder: '플레이어를 1명 선택하게 하세요.',
-    otherNightReminder: '플레이어를 1명 선택하게 하세요.',
-    reminders: ['저주'],
   },
   {
     id: 'scarletwoman1',
@@ -563,7 +414,7 @@ export const JOBS_BA: Job[] = [
     ability:
       '만약 살아있는 플레이어가 5명 이상이라면, 악마가 죽으면 당신은 악마가 됩니다.',
     firstNight: 0,
-    otherNight: 7,
+    otherNight: 4,
     otherNightReminder:
       '살아있는 플레이어가 5명 이상일 때 악마가 죽으면면, 부정한 여인에게 악마가 되었음을 알려줍니다.',
     reminders: ['악마'],
@@ -603,9 +454,9 @@ export const JOBS_BA: Job[] = [
     ],
     team: 'demon',
     ability:
-      "매일 밤*, 플레이어를 선택하세요. 해당 플레이어는 죽습니다. [+1 외지인. 팡키는 모든 하수인의 '종류'를 직접 고르며 스토리텔러에게 받은 블러핑 직업을 하수인에게 모두 지정하고 시작합니다.]",
+      '매일 밤*, 플레이어를 선택하세요. 해당 플레이어는 죽습니다. [+1 하수인]',
     firstNight: 0,
-    otherNight: 8,
+    otherNight: 5,
     otherNightReminder: '플레이어를 1명 선택합니다. 해당 플레이어는 죽습니다.',
     reminders: ['죽음'],
     setup: true,
@@ -621,7 +472,7 @@ export const JOBS_BA: Job[] = [
     ability:
       '매일 밤*, 플레이어를 1명 선택합니다. 해당 플레이어는 죽습니다. 당신의 가장 가까운 양 옆 시민 플레이어들은 중독됩니다. (하수인과 이방인을 건너 뛰고)',
     firstNight: 0,
-    otherNight: 10,
+    otherNight: 7,
     otherNightReminder: '플레이어를 1명 선택합니다. 해당 플레이어는 죽습니다.',
     reminders: ['죽음', '중독', '중독'],
   },
@@ -636,7 +487,7 @@ export const JOBS_BA: Job[] = [
     ability:
       '매일 밤*, 플레이어를 1명 선택할 수도 있습니다. 해당 플레이어는 죽습니다. 만약 오늘 밤 죽이지 않기로 했다면, 다음 밤에 3명의 플레이어를 선택해서 죽일 수 있습니다.',
     firstNight: 0,
-    otherNight: 9,
+    otherNight: 6,
     otherNightReminder:
       "플레이어를 1명 선택할 수도 있습니다. 해당 플레이어는 죽습니다. 만약 죽이지 않기로 했다면, '3번 공격' 알림 토큰으로 표시합니다.",
     reminders: ['죽음', '죽음', '죽음', '3번 공격'],
@@ -650,9 +501,9 @@ export const JOBS_BA: Job[] = [
     ],
     team: 'demon',
     ability:
-      '매일 밤*, 플레이어를 1명 선택합니다. 해당 플레이어는 죽습니다. 당신이 죽인 하수인은 매일 밤 능력을 유지하고, 그 하수인의 가장 가까운 주민 플레이어 중 1명이 중독됩니다. (하수인과 이방인을 건너 뛰고) [-1 외지인]',
+      '매일 밤*, 플레이어를 1명 선택합니다. 해당 플레이어는 죽습니다. 당신이 죽인 하수인은 매일 밤 능력을 유지하고, 그 하수인의 가장 가까운 주민 플레이어 중 1명이 중독됩니다. (하수인과 이방인을 건너 뛰고) [-1 이방인]',
     firstNight: 0,
-    otherNight: 11,
+    otherNight: 8,
     otherNightReminder:
       '플레이어를 1명 선택합니다. 해당 플레이어는 죽습니다. 하수인을 죽이면 해당 하수인의 능력은 유지됩니다. 그리고 이웃 플레이어가 주민이라면 그중 1명을 중독시킵니다.',
     reminders: [
