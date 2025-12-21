@@ -11,6 +11,13 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'www.bloodstar.xyz',
+        port: '',
+        pathname: '/p/mate234/2/**',
+        search: '',
+      },
+      {
+        protocol: 'https',
         hostname: 'botc.app',
         port: '',
         pathname: '/assets/**',
