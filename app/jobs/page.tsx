@@ -1,15 +1,15 @@
 'use client';
-import React, { useState } from 'react';
-import NavigationBar from '../components/NavigationBar';
-import JobModal from '../components/JobModal';
-import { Job } from '../types';
+
+import React from 'react';
+import NavigationBar from '../../components/NavigationBar';
+import JobModal from '../../components/JobModal';
 import Image from 'next/image';
-import { JOBS_BA } from '../data/삐약이의저주';
-import Update from '../components/Update';
+import { JOBS_BA } from '../../data/삐약이의저주';
+import Update from '../../components/Update';
+import { useNoteActions } from '../../hooks/useNoteActions';
 
 export default function JobsPage() {
-  const [selectedJob, setSelectedJob] = useState<Job | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { handleJobClick } = useNoteActions();
 
   const categories = ['townsfolk', 'outsider', 'minion', 'demon'] as const;
 
@@ -41,11 +41,6 @@ export default function JobsPage() {
       default:
         return 'bg-gray-500 hover:bg-gray-600';
     }
-  };
-
-  const handleJobClick = (job: Job) => {
-    setSelectedJob(job);
-    setIsModalOpen(true);
   };
 
   return (
@@ -110,11 +105,7 @@ export default function JobsPage() {
         </div>
       </div>
 
-      <JobModal
-        job={selectedJob}
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
+      <JobModal />
     </div>
   );
 }

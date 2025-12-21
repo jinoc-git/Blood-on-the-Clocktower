@@ -1,4 +1,4 @@
-import { NoteAction, NoteState } from '../types';
+import { NoteAction, NoteState } from '../app/types';
 
 export const initNoteState: NoteState = {
   memoData: {},

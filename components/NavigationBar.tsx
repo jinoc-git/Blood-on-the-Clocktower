@@ -28,7 +28,7 @@ const NavigationBar: React.FC = () => {
             }`}>
             직업 설명
           </Link>
-          <Link
+          {/* <Link
             href="/host-mode"
             className={`py-4 px-6 text-lg font-medium transition-colors ${
               pathname === '/host-mode'
@@ -36,7 +36,7 @@ const NavigationBar: React.FC = () => {
                 : 'text-gray-600 hover:text-blue-600'
             }`}>
             병아리 전용
-          </Link>
+          </Link> */}
         </div>
       </div>
     </nav>

@@ -1,14 +1,12 @@
 import React from 'react';
-import { Job } from '../types';
 import Image from 'next/image';
+import { useNoteState } from '../providers/NoteProvider';
+import { useNoteActions } from '../hooks/useNoteActions';
 
-interface JobModalProps {
-  job: Job | null;
-  isOpen: boolean;
-  onClose: () => void;
-}
+export default function JobModal() {
+  const { selectedJobForModal: job, isJobModalOpen: isOpen } = useNoteState();
+  const { closeJobModal: onClose } = useNoteActions();
 
-const JobModal: React.FC<JobModalProps> = ({ job, isOpen, onClose }) => {
   if (!isOpen || !job) return null;
 
   const getJobColor = (category: string) => {
@@ -88,6 +86,4 @@ const JobModal: React.FC<JobModalProps> = ({ job, isOpen, onClose }) => {
       </div>
     </div>
   );
-};
-
-export default JobModal;
+}

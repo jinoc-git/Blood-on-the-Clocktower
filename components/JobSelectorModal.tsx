@@ -1,19 +1,14 @@
 import React from 'react';
-import { Job } from '../types';
 import Image from 'next/image';
 import { JOBS_BA } from '../data/삐약이의저주';
+import { useNoteState } from '../providers/NoteProvider';
+import { useNoteActions } from '../hooks/useNoteActions';
 
-interface JobSelectorModalProps {
-  isOpen: boolean;
-  onJobSelect: (job: Job) => void;
-  onClose: () => void;
-}
+export default function JobSelectorModal() {
+  const { isJobSelectorOpen: isOpen } = useNoteState();
+  const { handleJobSelect: onJobSelect, closeJobSelector: onClose } =
+    useNoteActions();
 
-export default function JobSelectorModal({
-  isOpen,
-  onJobSelect,
-  onClose,
-}: JobSelectorModalProps) {
   if (!isOpen) return null;
 
   const getJobColor = (category: string) => {

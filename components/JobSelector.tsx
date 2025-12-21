@@ -1,5 +1,5 @@
 import React from 'react';
-import { Job } from '../types';
+import { Job } from '../app/types';
 import { JOBS_BA } from '../data/삐약이의저주';
 
 interface JobSelectorProps {

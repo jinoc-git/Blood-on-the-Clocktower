@@ -1,4 +1,4 @@
-import { Job } from '../types';
+import { Job } from '../app/types';
 // 실제 사용하는 직업, JSON 파일의 내용 복붙
 export const JOBS_BA: Job[] = [
   {
