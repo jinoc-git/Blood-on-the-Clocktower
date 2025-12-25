@@ -26,9 +26,12 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'raw.githubusercontent.com',
-        port: '',
-        pathname: '/wonhyo-e/botc-translations/blob/main/assets/**',
-        search: '',
+        pathname: '/wonhyo-e/botc-translations/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'github.com',
+        pathname: '/wonhyo-e/botc-translations/blob/**',
       },
     ],
     minimumCacheTTL: 60 * 60,
