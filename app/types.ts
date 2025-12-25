@@ -28,6 +28,8 @@ export type Job = JobBaseType & {
   jinxes?: Record<string, string>[];
   special?: Record<string, string>[];
   setup?: boolean;
+  edition?: string;
+  flavor?: string;
 };
 
 export interface Token {

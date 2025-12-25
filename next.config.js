@@ -9,13 +9,6 @@ const nextConfig = {
         pathname: '/p/mate234/**',
         search: '',
       },
-      // {
-      //   protocol: 'https',
-      //   hostname: 'www.bloodstar.xyz',
-      //   port: '',
-      //   pathname: '/p/mate234/2/**',
-      //   search: '',
-      // },
       {
         protocol: 'https',
         hostname: 'botc.app',
@@ -28,6 +21,13 @@ const nextConfig = {
         hostname: 'i.imgur.com',
         port: '',
         pathname: '/**',
+        search: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'https://github.com',
+        port: '',
+        pathname: '/wonhyo-e/botc-translations/blob/main/assets/**',
         search: '',
       },
     ],
