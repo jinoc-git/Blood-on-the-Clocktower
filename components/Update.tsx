@@ -1,8 +1,8 @@
 import React from 'react';
 
 export default function Update() {
-  const updateInfo = '스파르타 시트 추가';
-  const updateDate = '(2025.12.25)';
+  const updateInfo = '로마의 몰락 수정';
+  const updateDate = '(2025.12.27)';
   return (
     <>
       <span className=" text-sm font-normal">
