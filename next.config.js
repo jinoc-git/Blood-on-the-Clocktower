@@ -6,6 +6,13 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'www.bloodstar.xyz',
         port: '',
+        pathname: '/p/AlexS/**',
+        search: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.bloodstar.xyz',
+        port: '',
         pathname: '/p/mate234/**',
         search: '',
       },
