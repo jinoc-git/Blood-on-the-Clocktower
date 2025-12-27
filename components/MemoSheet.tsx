@@ -73,7 +73,19 @@ export default function MemoSheet() {
           <thead>
             <tr className="border border-amber-950 p-2">
               <td></td>
-              <th>지목</th>
+              <th className=" relative">
+                지목
+                <button
+                  className="liquid-glass-copy-button top-[5px] right-[5px] hover:bg-gray-300"
+                  onClick={() => copyMemo({ type: 'peg', pegData })}>
+                  <Image
+                    src={'/assets/icon/copy.svg'}
+                    width={18}
+                    height={18}
+                    alt="복사 아이콘"
+                  />
+                </button>
+              </th>
 
               {PERIODS.map((period) => {
                 return (
@@ -148,7 +160,9 @@ export default function MemoSheet() {
                       </span>
                       <button
                         className="liquid-glass-copy-button top-[-14px] right-[-4px] hover:bg-gray-300"
-                        onClick={() => copyMemo(memoData, job.id)}>
+                        onClick={() =>
+                          copyMemo({ type: 'job', memoData, jobId: job.id })
+                        }>
                         <Image
                           src={'/assets/icon/copy.svg'}
                           width={18}
