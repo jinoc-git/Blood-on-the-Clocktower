@@ -18,6 +18,13 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'user-images.klutzbanana.com',
+        port: '',
+        pathname: '/**',
+        search: '',
+      },
+      {
+        protocol: 'https',
         hostname: 'botc.app',
         port: '',
         pathname: '/assets/**',
