@@ -4,14 +4,14 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { PERIODS } from '../constants/periods';
 import { useNoteActions } from '../hooks/useNoteActions';
-import { useNoteState } from '../providers/NoteProvider';
+import { DATA_KEY, useNoteState } from '../providers/NoteProvider';
 import { copyMemo } from '../utils/copyMemo';
 
 const INIT_ROW = 8;
 const MAX_ROW = 25;
 
 export default function MemoSheet() {
-  const { memoData } = useNoteState();
+  const { memoData, pegData } = useNoteState();
   const {
     handleMemoUpdate,
     handleJobRemove,
@@ -19,12 +19,13 @@ export default function MemoSheet() {
     handleJobCellClick,
     resetSheet,
     handleRemoveOnlyMemo,
+    handlePegUpdate,
   } = useNoteActions();
 
   const [maxRows, setMaxRows] = useState(INIT_ROW);
 
   useEffect(() => {
-    const item = localStorage.getItem('blood-on-the-clocktower');
+    const item = localStorage.getItem(DATA_KEY);
     if (item) {
       const memoLen = Object.keys(JSON.parse(item)).length;
       setMaxRows(memoLen > INIT_ROW ? memoLen : INIT_ROW);
@@ -70,6 +71,24 @@ export default function MemoSheet() {
       <div className="overflow-x-auto relative">
         <table className="w-full border-collapse border liquid-glass-table">
           <thead>
+            <tr className="border border-amber-950 p-2">
+              <td></td>
+              <th>지목</th>
+
+              {PERIODS.map((period) => {
+                return (
+                  <td key={`지목-${period}`}>
+                    <textarea
+                      value={pegData[period] || ''}
+                      onChange={(e) => handlePegUpdate(period, e.target.value)}
+                      // disabled={isDisable}
+                      className="w-full h-20 font-semibold p-1 text-sm resize-none border-none outline-none bg-transparent disabled:placeholder-center disabled:cursor-not-allowed"
+                      placeholder="메모..."
+                    />
+                  </td>
+                );
+              })}
+            </tr>
             <tr>
               <th className="border border-amber-950 p-2  min-w-[40px]"></th>
               {/* <th className="border p-2  min-w-[60px]">토큰</th> */}

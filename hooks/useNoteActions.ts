@@ -1,4 +1,4 @@
-import { Job } from '../app/types';
+import { Job, Memos } from '../app/types';
 import { useNoteDispatch } from '../providers/NoteProvider';
 
 export const useNoteActions = () => {
@@ -18,5 +18,7 @@ export const useNoteActions = () => {
     handleJobCellClick: () => dispatch({ type: 'OPEN_JOB_SELECTOR' }),
     closeJobModal: () => dispatch({ type: 'CLOSE_JOB_MODAL' }),
     closeJobSelector: () => dispatch({ type: 'CLOSE_JOB_SELECTOR' }),
+    handlePegUpdate: (period: string, value: string) =>
+      dispatch({ type: 'UPDATE_PEG', payload: { period, value } }),
   };
 };

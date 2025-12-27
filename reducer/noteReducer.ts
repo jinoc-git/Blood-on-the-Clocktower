@@ -1,11 +1,14 @@
 import { NoteAction, NoteState } from '../app/types';
+import { DATA_KEY, PEG_DATA_KEY } from '../providers/NoteProvider';
 
 export const initNoteState: NoteState = {
   memoData: {},
+  pegData: {},
   selectedJobForModal: null,
   isJobModalOpen: false,
   isJobSelectorOpen: false,
   isInitialized: false,
+  isPegInitialized: false,
 };
 
 export const noteReducer = (
@@ -55,7 +58,8 @@ export const noteReducer = (
     }
 
     case 'RESET_SHEET':
-      localStorage.setItem('blood-on-the-clocktower', JSON.stringify({}));
+      localStorage.setItem(DATA_KEY, JSON.stringify({}));
+      localStorage.setItem(PEG_DATA_KEY, JSON.stringify({}));
       return { ...initNoteState, isInitialized: true };
 
     case 'REMOVE_ONLY_MEMO': {
@@ -67,7 +71,7 @@ export const noteReducer = (
           tokens: [], // Assuming tokens should also be cleared
         };
       });
-      return { ...state, memoData: newMemoData };
+      return { ...state, memoData: newMemoData, pegData: {} };
     }
 
     case 'OPEN_JOB_MODAL':
@@ -85,6 +89,18 @@ export const noteReducer = (
 
     case 'CLOSE_JOB_SELECTOR':
       return { ...state, isJobSelectorOpen: false };
+
+    case 'INITIALIZE_PEG':
+      return { ...state, pegData: action.payload, isPegInitialized: true };
+
+    case 'UPDATE_PEG':
+      const { period, value } = action.payload;
+      const newPegData = { ...state.pegData };
+
+      if (value.trim() === '') delete newPegData[period];
+      else newPegData[period] = value;
+
+      return { ...state, pegData: newPegData };
 
     default:
       return state;

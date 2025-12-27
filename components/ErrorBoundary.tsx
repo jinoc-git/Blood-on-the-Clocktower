@@ -1,6 +1,7 @@
 'use client';
 
 import React, { Component, ErrorInfo, ReactNode } from 'react';
+import { DATA_KEY } from '../providers/NoteProvider';
 
 interface Props {
   children: ReactNode;
@@ -26,7 +27,7 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   private handleReset = () => {
-    localStorage.setItem('blood-on-the-clocktower', JSON.stringify({}));
+    localStorage.setItem(DATA_KEY, JSON.stringify({}));
     window.location.reload();
   };
 

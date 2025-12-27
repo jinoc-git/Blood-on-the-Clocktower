@@ -1,4 +1,4 @@
-type Memos = {
+export type Memos = {
   [period: string]: string;
 };
 
@@ -48,10 +48,12 @@ export interface Token {
 
 export interface NoteState {
   memoData: MemoData;
+  pegData: Memos;
   selectedJobForModal: Job | null;
   isJobModalOpen: boolean;
   isJobSelectorOpen: boolean;
   isInitialized: boolean;
+  isPegInitialized: boolean;
 }
 
 export type NoteAction =
@@ -67,4 +69,6 @@ export type NoteAction =
   | { type: 'OPEN_JOB_MODAL'; payload: Job }
   | { type: 'CLOSE_JOB_MODAL' }
   | { type: 'OPEN_JOB_SELECTOR' }
-  | { type: 'CLOSE_JOB_SELECTOR' };
+  | { type: 'CLOSE_JOB_SELECTOR' }
+  | { type: 'INITIALIZE_PEG'; payload: Memos }
+  | { type: 'UPDATE_PEG'; payload: { period: string; value: string } };
