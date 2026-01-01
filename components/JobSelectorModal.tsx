@@ -55,6 +55,7 @@ export default function JobSelectorModal() {
                     const target = e.target as HTMLImageElement;
                     target.src = '/assets/jobs/placeholder-job.png';
                   }}
+                  priority
                 />
               </div>
               <span className="text-sm font-medium text-center">

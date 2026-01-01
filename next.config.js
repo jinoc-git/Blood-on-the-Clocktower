@@ -48,7 +48,7 @@ const nextConfig = {
         pathname: '/wonhyo-e/botc-translations/blob/**',
       },
     ],
-    minimumCacheTTL: 60 * 60,
+    minimumCacheTTL: 60 * 60 * 60,
   },
 };
 

@@ -70,6 +70,7 @@ export default function JobModal() {
                     const target = e.target as HTMLImageElement;
                     target.src = '/assets/jobs/placeholder-job.png';
                   }}
+                  priority
                 />
               </div>
               <p className="text-lg opacity-90">{getCategoryTitle(job.team)}</p>

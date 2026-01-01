@@ -151,6 +151,7 @@ export default function MemoSheet() {
                             const target = e.target as HTMLImageElement;
                             target.src = '/assets/jobs/placeholder-job.png';
                           }}
+                          priority
                         />
                       </div>
                       <span
