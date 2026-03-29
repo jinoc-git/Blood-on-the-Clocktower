@@ -53,7 +53,7 @@ export const JOBS_BA: Job[] = [
     ],
     team: 'townsfolk',
     ability:
-      '선한 플레이어(손주) 1명과 그 캐릭터를 알고 시작합니다. 악마가 해당 플레이어를 죽이면 당신도 죽습니다.',
+      '선한 플레이어(손주) 1명과 그 캐릭터를 알고 시작합니다. 악마가 밤에 손주를 죽이면 당신도 죽습니다.',
     firstNight: 11,
     otherNight: 11,
     firstNightReminder: '선한 플레이어 1명과 그 캐릭터를 알려주세요.',
@@ -69,7 +69,7 @@ export const JOBS_BA: Job[] = [
     ],
     team: 'townsfolk',
     ability:
-      '게임당 한 번, 밤에 플레이어 1명을 선택하세요. 그가 하수인이라면 죽습니다.',
+      '게임당 한 번, 밤에 플레이어 1명을 선택하세요. 그가 하수인이라면 죽습니다.(스파이에게도 명중합니다)',
     firstNight: 0,
     otherNight: 0,
     reminders: ['능력없음'],
@@ -101,7 +101,7 @@ export const JOBS_BA: Job[] = [
     ],
     team: 'townsfolk',
     ability:
-      '매일 밤, 살아있는 양 옆의 플레이어 중 몇 명이 악한 진영인지 알게 됩니다.',
+      '매일 밤, 당신의 살아있는 양 옆의 플레이어 중 몇 명이 악한 진영인지 알게 됩니다.',
     firstNight: 8,
     otherNight: 14,
     firstNightReminder:
@@ -133,7 +133,7 @@ export const JOBS_BA: Job[] = [
     ],
     team: 'townsfolk',
     ability:
-      '매일 밤, 당신은 죽은 플레이어 중 악한 진영이 얼마나 있는지 알게 됩니다. (마지막 밤에 죽은 플레이어 포함)',
+      '매일 밤, 당신은 죽은 플레이어 중 악한 진영이 얼마나 있는지 알게 됩니다. (지금 밤에 죽은 플레이어 포함)',
     firstNight: 0,
     otherNight: 18,
     otherNightReminder:
@@ -282,7 +282,7 @@ export const JOBS_BA: Job[] = [
       '한 명은 취한 상태입니다. 당신이 죽어도 마찬가지입니다. 게임당 한 번 퍼즐마스터는 언제든지 취한 플레이어를 추측합니다. 맞다면 진짜 악마를 알게 되지만 틀리다면 선한 플레이어를 악마로 알게 됩니다.',
     firstNight: 0,
     otherNight: 0,
-    reminders: ['능력없음'],
+    reminders: ['퍼즐만취', '능력없음'],
   },
   {
     id: 'tinker1',
@@ -374,7 +374,7 @@ export const JOBS_BA: Job[] = [
     ],
     team: 'minion',
     ability:
-      '매일 밤, 당신은 마도서(모든 플레이어의 직업)를 봅니다. 당신은 죽어서도 조사직에게 시민이나 이방인으로 보일 수 있습니다.',
+      '매일 밤, 당신은 마도서(모든 플레이어의 직업 및 상태이상)를 봅니다. 당신은 죽어서도 조사직에게 시민이나 이방인으로 보일 수 있습니다.',
     firstNight: 13,
     otherNight: 19,
     firstNightReminder: '스파이에게 마도서를 보여주세요.',
