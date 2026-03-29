@@ -4,7 +4,7 @@ import React from 'react';
 import NavigationBar from '../../components/NavigationBar';
 import JobModal from '../../components/JobModal';
 import Image from 'next/image';
-import { JOBS_SPARTA } from '../../data/삐약이의저주';
+import { JOBS_BA } from '../../data/삐약이의저주';
 import Update from '../../components/Update';
 import { useNoteActions } from '../../hooks/useNoteActions';
 
@@ -61,46 +61,44 @@ export default function JobsPage() {
               className="bg-transparent rounded-lg shadow-md p-6">
               <h2
                 className={`text-xl font-bold mb-4 text-center rounded text-white ${getJobColor(
-                  category
+                  category,
                 )}`}>
                 {getCategoryTitle(category)}
               </h2>
 
               <div className="grid grid-cols-1 gap-3">
-                {JOBS_SPARTA.filter((job) => job.team === category).map(
-                  (job) => (
-                    <div
-                      key={job.id}
-                      className={`
+                {JOBS_BA.filter((job) => job.team === category).map((job) => (
+                  <div
+                    key={job.id}
+                    className={`
                       ${getJobColor(job.team)} 
                       text-white p-4 rounded cursor-pointer transition-colors flex items-center
                     `}
-                      onClick={() => handleJobClick(job)}>
-                      <div className="w-12 h-12 mr-3 relative flex-shrink-0 bg-white rounded-full">
-                        <Image
-                          src={
-                            typeof job.image === 'string'
-                              ? job.image
-                              : job.image[0]
-                          }
-                          alt={job.name}
-                          fill
-                          className="object-cover rounded"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.src = '/assets/jobs/placeholder-job.png';
-                          }}
-                        />
-                      </div>
-                      <div className="flex-1">
-                        <div className="text-lg font-medium">{job.name}</div>
-                        <div className="text-sm opacity-80 mt-1">
-                          클릭하여 상세보기
-                        </div>
+                    onClick={() => handleJobClick(job)}>
+                    <div className="w-12 h-12 mr-3 relative flex-shrink-0 bg-white rounded-full">
+                      <Image
+                        src={
+                          typeof job.image === 'string'
+                            ? job.image
+                            : job.image[0]
+                        }
+                        alt={job.name}
+                        fill
+                        className="object-cover rounded"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = '/assets/jobs/placeholder-job.png';
+                        }}
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <div className="text-lg font-medium">{job.name}</div>
+                      <div className="text-sm opacity-80 mt-1">
+                        클릭하여 상세보기
                       </div>
                     </div>
-                  )
-                )}
+                  </div>
+                ))}
               </div>
             </div>
           ))}
