@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { JOBS_BA } from '../data/삐약이의저주';
+import { JOBS_SPARTA } from '../data/삐약이의저주';
 import { useNoteState } from '../providers/NoteProvider';
 import { useNoteActions } from '../hooks/useNoteActions';
 
@@ -36,7 +36,7 @@ export default function JobSelectorModal() {
         <h2 className="text-2xl font-bold mb-6 text-center">직업 선택</h2>
 
         <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          {JOBS_BA.map((job) => (
+          {JOBS_SPARTA.map((job) => (
             <div
               key={job.id}
               onClick={() => onJobSelect(job)}
